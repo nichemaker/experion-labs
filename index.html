@@ -180,6 +180,9 @@ button { font-family: inherit; cursor: pointer; }
 
 /* dropdown */
 .nav-item { position:relative; }
+.nav-item::after {
+  content:''; position:absolute; top:100%; left:-20px; right:-20px; height:20px;
+}
 .dropdown {
   position:absolute; top:calc(100% + 16px); left:50%; transform:translateX(-50%) translateY(8px);
   width:min(620px, 86vw); background:#fff; border:1px solid var(--line);
