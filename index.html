@@ -3,7 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- INTERIM ONLY: keep while on *.workers.dev, DELETE once live on experionlabs.com -->
+  <meta name="robots" content="noindex, nofollow" />
   <title>Experion Labs — Agentic-First Deep-Tech Studio</title>
+  <meta name="description" content="Experion Labs is an agentic-first deep-tech studio building enterprise-scale intelligence on AWS Agent Core — bridging complex engineering and human intuition to turn friction into seamless customer experiences." />
+  <link rel="canonical" href="https://experionlabs.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Experion Labs" />
+  <meta property="og:title" content="Experion Labs — Agentic-First Deep-Tech Studio" />
+  <meta property="og:description" content="We bridge complex engineering and human intuition — deploying intelligent, agentic capabilities on AWS Agent Core that optimize operations and turn friction into seamless experiences." />
+  <meta property="og:url" content="https://experionlabs.com/" />
+  <meta property="og:image" content="https://experionlabs.com/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Experion Labs — Agentic-First Deep-Tech Studio" />
+  <meta name="twitter:description" content="Enterprise-scale agentic intelligence on AWS Agent Core. Built for the agentic era." />
+  <meta name="twitter:image" content="https://experionlabs.com/og-image.jpg" />
+  <meta name="theme-color" content="#1E6FE8" />
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -180,9 +197,6 @@ button { font-family: inherit; cursor: pointer; }
 
 /* dropdown */
 .nav-item { position:relative; }
-.nav-item::after {
-  content:''; position:absolute; top:100%; left:-20px; right:-20px; height:20px;
-}
 .dropdown {
   position:absolute; top:calc(100% + 16px); left:50%; transform:translateX(-50%) translateY(8px);
   width:min(620px, 86vw); background:#fff; border:1px solid var(--line);
@@ -510,6 +524,18 @@ body.density-comfy   { --section-pad: 150px; }
 }
 
   </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Experion Labs",
+  "url": "https://experionlabs.com/",
+  "logo": "https://experionlabs.com/logo.png",
+  "description": "An agentic-first deep-tech studio building enterprise-scale intelligence on AWS Agent Core, bridging complex engineering and human intuition to turn friction into seamless customer experiences.",
+  "email": "admin@experionlabs.com",
+  "knowsAbout": ["Agentic AI","AWS Agent Core","Customer experience","Identity and trust","Enterprise intelligence"]
+}
+</script>
 </head>
 <body>
   <div id="root"></div>
@@ -1924,7 +1950,7 @@ Object.assign(window, {
           <div className="wrap" style={{ position: "relative", zIndex: 2 }}>
             <div className="sec-head center" style={{ paddingTop: 30 }}>
               <div className="eyebrow" style={{ justifyContent: "center" }}><span className="dot" />Our Products</div>
-              <h1 className="h-display" style={{ marginTop: 18 }}>Built for the <span className="grad">Agentic Era.</span></h1>
+              <h2 className="h-display" style={{ marginTop: 18 }}>Built for the <span className="grad">Agentic Era.</span></h2>
               <p className="lead" style={{ margin: "20px auto 0", maxWidth: 640 }}>Two flagship products, purpose-built on AWS Agent Core — transforming customer identity and in-branch experience.</p>
             </div>
             <window.Reveal delay={120}>
@@ -2063,7 +2089,7 @@ Object.assign(window, {
           <div className="wrap" style={{ position: "relative", zIndex: 2 }}>
             <div className="sec-head center" style={{ paddingTop: 30 }}>
               <div className="eyebrow" style={{ justifyContent: "center" }}><span className="dot" />Our Solutions</div>
-              <h1 className="h-display" style={{ marginTop: 18 }}>Intelligence at <span className="grad">Every Layer.</span></h1>
+              <h2 className="h-display" style={{ marginTop: 18 }}>Intelligence at <span className="grad">Every Layer.</span></h2>
               <p className="lead" style={{ margin: "20px auto 0", maxWidth: 680 }}>Two intelligent solutions covering every touchpoint — agentic AI across all pillars and unified omnichannel analytics with real-time sentiment — all built natively on AWS Agent Core.</p>
             </div>
             <window.Reveal delay={120}>
@@ -2114,7 +2140,7 @@ Object.assign(window, {
           <div className="wrap" style={{ position: "relative", zIndex: 2 }}>
             <div className="sec-head center" style={{ paddingTop: 24 }}>
               <div className="eyebrow eyebrow--chip" style={{ margin: "0 auto" }}><span className="dot" />Company</div>
-              <h1 className="h-display" style={{ marginTop: 22 }}>The Team Behind <span className="grad">the Mission.</span></h1>
+              <h2 className="h-display" style={{ marginTop: 22 }}>The Team Behind <span className="grad">the Mission.</span></h2>
             </div>
           </div>
         </header>
