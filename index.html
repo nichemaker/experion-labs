@@ -1,0 +1,2260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Experion Labs — Agentic-First Deep-Tech Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+/* ============================================================
+   Experion Labs — Redesign Prototype
+   Design system stylesheet
+   Fonts: Sora (display) · Plus Jakarta Sans (body/UI)
+   ============================================================ */
+
+:root {
+  /* Ink / text */
+  --ink:      #0A1A2F;
+  --ink-2:    #18293F;
+  --slate:    #56697F;
+  --slate-2:  #8294AB;
+
+  /* Surfaces */
+  --bg:       #FFFFFF;
+  --bg-tint:  #F2F7FD;
+  --bg-tint2: #E9F1FB;
+  --line:     #E6EDF7;
+  --line-2:   #D7E2F0;
+
+  /* Brand accents */
+  --blue:     #1E6FE8;
+  --blue-ink: #1556C2;
+  --cyan:     #10A6C9;
+  --green:    #21C08A;
+
+  /* Dark panels */
+  --panel:    #091525;
+  --panel-2:  #0E2034;
+  --panel-3:  #16304B;
+  --panel-line: rgba(120,170,230,.14);
+  --panel-ink:  #EAF2FF;
+  --panel-sub:  #8AA2C0;
+
+  /* Gradients */
+  --grad-brand: linear-gradient(120deg, #1B3C77 0%, #1E6FE8 38%, #10A6C9 72%, #2ECf9A 100%);
+  --grad-cta:   linear-gradient(100deg, #10A6C9 0%, #1E6FE8 100%);
+  --grad-text:  linear-gradient(100deg, #10A6C9 0%, #1E6FE8 70%);
+
+  /* Shape */
+  --r-xs: 10px;
+  --r-sm: 14px;
+  --r:    20px;
+  --r-lg: 26px;
+  --pill: 999px;
+
+  /* Shadow */
+  --sh-1: 0 1px 2px rgba(16,40,80,.05), 0 8px 24px -14px rgba(16,40,80,.18);
+  --sh-2: 0 2px 6px rgba(16,40,80,.06), 0 20px 48px -20px rgba(16,40,80,.28);
+  --sh-dark: 0 30px 80px -30px rgba(7,18,38,.55), 0 8px 30px -12px rgba(7,18,38,.4);
+
+  /* Accent driven by Tweaks (defaults to blue) */
+  --accent: var(--blue);
+  --accent-soft: rgba(30,111,232,.10);
+
+  /* Density */
+  --section-pad: 120px;
+  --display-font: "Sora";
+}
+
+body.no-anim .reveal { opacity:1 !important; transform:none !important; transition:none !important; }
+body.no-anim .view { animation:none !important; }
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  line-height: 1.6;
+}
+h1,h2,h3,h4 { font-family: var(--display-font, "Sora"), "Sora", sans-serif; margin: 0; line-height: 1.04; letter-spacing: -.02em; color: var(--ink); }
+p { margin: 0; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+::selection { background: rgba(30,111,232,.18); }
+
+/* ---- layout ---- */
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 40px; }
+.section { padding: var(--section-pad) 0; position: relative; }
+.section--tint { background: var(--bg-tint); }
+.section--dark { background: var(--panel); color: var(--panel-ink); }
+
+/* gradient ambient wash */
+.ambient { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+.ambient::before {
+  content:""; position:absolute; width:780px; height:780px; right:-220px; top:-260px;
+  background: radial-gradient(circle at center, rgba(30,111,232,.13), transparent 62%);
+}
+.ambient::after {
+  content:""; position:absolute; width:620px; height:620px; left:-200px; bottom:-220px;
+  background: radial-gradient(circle at center, rgba(16,166,201,.12), transparent 64%);
+}
+
+/* ---- type helpers ---- */
+.eyebrow {
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:"Plus Jakarta Sans"; font-weight:700; font-size:12.5px;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--accent);
+}
+.eyebrow .dot { width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 4px var(--accent-soft); }
+.eyebrow--chip {
+  background:#fff; border:1px solid var(--line); border-radius:var(--pill);
+  padding:9px 18px; box-shadow:var(--sh-1);
+}
+.section--dark .eyebrow { color:#3FC8E6; }
+.section--dark .eyebrow .dot { background:#3FC8E6; box-shadow:0 0 0 4px rgba(63,200,230,.18); }
+
+.h-display { font-size: clamp(40px, 6vw, 76px); font-weight: 800; letter-spacing:-.035em; }
+.h1 { font-size: clamp(34px, 4.6vw, 58px); font-weight: 800; letter-spacing:-.03em; }
+.h2 { font-size: clamp(15px,1.15vw,17px); }
+.grad { background: var(--grad-text); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.muted { color: var(--slate); }
+.lead { font-size: clamp(17px,1.35vw,20px); color: var(--slate); line-height:1.62; }
+.section--dark .muted, .section--dark .lead { color: var(--panel-sub); }
+.section--dark h1, .section--dark h2, .section--dark h3 { color: var(--panel-ink); }
+
+/* ---- buttons ---- */
+.btn { display:inline-flex; align-items:center; gap:9px; border:0; border-radius:var(--pill);
+  font-weight:700; font-size:15px; padding:14px 24px; transition:transform .18s, box-shadow .25s, background .2s; white-space:nowrap; }
+.btn svg { width:17px; height:17px; }
+.btn-primary { background: var(--grad-cta); color:#fff; box-shadow: 0 10px 26px -10px rgba(30,111,232,.6); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 34px -10px rgba(30,111,232,.66); }
+.btn-primary .arrow { transition: transform .2s; }
+.btn-primary:hover .arrow { transform: translateX(4px); }
+.btn-ghost { background:#fff; color:var(--ink); border:1px solid var(--line-2); box-shadow:var(--sh-1); }
+.btn-ghost:hover { transform: translateY(-2px); border-color:var(--accent); color:var(--accent); }
+.btn-dark { background:rgba(255,255,255,.06); color:#fff; border:1px solid rgba(255,255,255,.16); }
+.btn-dark:hover { background:rgba(255,255,255,.12); }
+.btn-sm { padding:10px 18px; font-size:14px; }
+.btn-lg { padding:17px 30px; font-size:16px; }
+
+/* ---- chips / tags ---- */
+.tag { display:inline-flex; align-items:center; gap:6px; border-radius:var(--pill);
+  font-size:12.5px; font-weight:700; padding:6px 13px; letter-spacing:.02em; }
+.tag-cyan { color:var(--cyan); background:rgba(16,166,201,.10); border:1px solid rgba(16,166,201,.22); }
+.tag-blue { color:var(--blue); background:rgba(30,111,232,.09); border:1px solid rgba(30,111,232,.2); }
+.tag-violet { color:#6366F1; background:rgba(99,102,241,.09); border:1px solid rgba(99,102,241,.2); }
+.tag-line { color:var(--slate); background:#fff; border:1px solid var(--line-2); }
+
+/* =========================================================
+   NAV
+   ========================================================= */
+.nav { position: sticky; top:0; z-index: 60; }
+.nav-inner {
+  display:flex; align-items:center; justify-content:space-between; gap:24px;
+  margin: 14px auto; max-width:1280px; padding: 12px 18px 12px 22px;
+  background: rgba(255,255,255,.78); backdrop-filter: blur(18px) saturate(1.4);
+  border:1px solid var(--line); border-radius: var(--pill);
+  box-shadow: 0 10px 40px -22px rgba(16,40,80,.4);
+  transition: box-shadow .3s, background .3s;
+}
+.nav--scrolled .nav-inner { box-shadow: 0 16px 50px -22px rgba(16,40,80,.5); background: rgba(255,255,255,.9); }
+.brand { display:flex; align-items:center; gap:11px; cursor:pointer; }
+.brand-mark { width:38px; height:38px; flex:none; }
+.brand-word { font-family:"Sora"; font-weight:800; font-size:19px; letter-spacing:.02em; color:var(--ink); line-height:1; }
+.brand-word small { display:block; font-size:9.5px; letter-spacing:.42em; font-weight:700; color:var(--slate-2); margin-top:3px; }
+.nav-links { display:flex; align-items:center; gap:6px; }
+.nav-link { position:relative; display:flex; align-items:center; gap:5px; font-weight:600; font-size:15px;
+  color:var(--ink-2); padding:9px 15px; border-radius:var(--pill); transition:background .18s,color .18s; }
+.nav-link:hover { background: var(--accent-soft); color:var(--accent); }
+.nav-link.active { color:var(--accent); }
+.nav-link .chev { width:14px; height:14px; transition: transform .2s; }
+.nav-item.open .chev { transform: rotate(180deg); }
+.nav-actions { display:flex; align-items:center; gap:10px; }
+
+/* dropdown */
+.nav-item { position:relative; }
+.dropdown {
+  position:absolute; top:calc(100% + 16px); left:50%; transform:translateX(-50%) translateY(8px);
+  width:min(620px, 86vw); background:#fff; border:1px solid var(--line);
+  border-radius:var(--r); box-shadow: var(--sh-2); padding:14px;
+  opacity:0; visibility:hidden; transition:opacity .2s, transform .2s; z-index:80;
+}
+.nav-item.open .dropdown { opacity:1; visibility:visible; transform:translateX(-50%) translateY(0); }
+.dropdown-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.dd-item { display:flex; gap:13px; padding:14px; border-radius:var(--r-sm); transition:background .16s; cursor:pointer; }
+.dd-item:hover { background:var(--bg-tint); }
+.dd-ico { width:42px; height:42px; flex:none; border-radius:12px; display:grid; place-items:center;
+  background:var(--accent-soft); color:var(--accent); }
+.dd-ico svg { width:20px; height:20px; }
+.dd-title { font-weight:700; font-size:15px; color:var(--ink); display:flex; align-items:center; gap:7px; }
+.dd-desc { font-size:13px; color:var(--slate); line-height:1.45; margin-top:2px; }
+.dd-foot { margin-top:8px; padding:14px; border-radius:var(--r-sm); background:var(--bg-tint);
+  display:flex; align-items:center; justify-content:space-between; }
+.dd-foot span { font-size:13.5px; color:var(--slate); font-weight:600; }
+
+/* mobile nav button */
+.nav-burger { display:none; width:42px; height:42px; border-radius:12px; border:1px solid var(--line-2);
+  background:#fff; place-items:center; }
+.nav-burger svg { width:20px; height:20px; }
+
+/* =========================================================
+   HERO
+   ========================================================= */
+.hero { position:relative; overflow:hidden; padding: 56px 0 96px; }
+.hero-grid { display:grid; grid-template-columns: 1.04fr .96fr; gap:56px; align-items:center; position:relative; z-index:2; }
+.hero-badge { display:inline-flex; align-items:center; gap:9px; background:#fff; border:1px solid var(--line);
+  border-radius:var(--pill); padding:7px 8px 7px 14px; box-shadow:var(--sh-1); font-size:13.5px; font-weight:600; color:var(--ink-2); }
+.hero-badge b { color:var(--accent); }
+.hero-badge .pip { background:var(--grad-cta); color:#fff; font-size:11px; font-weight:800; letter-spacing:.08em;
+  padding:4px 9px; border-radius:var(--pill); }
+.hero h1 { font-size: clamp(42px, 5.4vw, 72px); font-weight:800; letter-spacing:-.04em; margin:24px 0 0; }
+.hero h1 .dot { color: var(--accent); }
+.hero-sub { margin-top:22px; max-width:520px; }
+.hero-cta { display:flex; gap:12px; margin-top:32px; flex-wrap:wrap; }
+.hero-trust { margin-top:36px; padding-top:26px; border-top:1px solid var(--line); }
+.hero-trust .lab { font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--slate-2); }
+.hero-trust-row { display:flex; gap:26px; flex-wrap:wrap; margin-top:14px; align-items:center; }
+.trust-item { display:flex; align-items:center; gap:8px; font-weight:700; font-size:14px; color:var(--ink-2); }
+.trust-item svg { width:16px; height:16px; color:var(--green); }
+
+/* Auto-cycling product showcase (hero) */
+.showcase { position:relative; }
+.sc-tabs { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:14px; }
+.sc-tab { position:relative; display:flex; align-items:center; gap:10px; text-align:left; padding:11px 13px;
+  background:#fff; border:1px solid var(--line); border-radius:var(--r-sm); cursor:pointer; transition:.2s; overflow:hidden; }
+.sc-tab:hover { border-color:var(--line-2); }
+.sc-tab.on { border-color:var(--accent); box-shadow:var(--sh-1);
+  background:linear-gradient(180deg, #fff, var(--accent-soft)); }
+.sc-ico { width:34px; height:34px; flex:none; border-radius:10px; display:grid; place-items:center;
+  background:var(--bg-tint); color:var(--slate-2); transition:.2s; }
+.sc-ico svg { width:18px; height:18px; }
+.sc-tab.on .sc-ico { background:var(--grad-cta); color:#fff; }
+.sc-tx { display:flex; flex-direction:column; min-width:0; line-height:1.12; }
+.sc-tx b { font-family:"Sora"; font-size:14px; font-weight:800; color:var(--ink); letter-spacing:-.01em;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.sc-tx i { font-style:normal; font-size:10px; font-weight:800; letter-spacing:.06em; text-transform:uppercase;
+  color:var(--slate-2); margin-top:3px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.sc-tab.on .sc-tx i { color:var(--accent); }
+.sc-prog { position:absolute; left:0; bottom:0; height:3px; width:100%; transform-origin:left;
+  background:var(--grad-cta); animation:scProg linear forwards; }
+@keyframes scProg { from { transform:scaleX(0); } to { transform:scaleX(1); } }
+.sc-stage { transition:height .5s cubic-bezier(.2,.7,.2,1); }
+.sc-fade { animation:scFade .55s cubic-bezier(.2,.7,.2,1); }
+@keyframes scFade { from { opacity:0; transform:translateY(12px) scale(.99); } to { opacity:1; transform:none; } }
+.sc-cta { display:inline-flex; align-items:center; gap:8px; margin-top:16px; padding:11px 18px; border-radius:var(--pill);
+  background:#fff; border:1px solid var(--line-2); box-shadow:var(--sh-1); font-weight:700; font-size:14px; color:var(--ink);
+  transition:.2s; }
+.sc-cta svg { transition:transform .2s; }
+.sc-cta:hover { border-color:var(--accent); color:var(--accent); transform:translateY(-2px); }
+.sc-cta:hover svg { transform:translateX(3px); }
+body.no-anim .sc-prog { display:none; }
+body.no-anim .sc-fade { animation:none; }
+
+/* hero stat strip */
+.hero-stats { display:flex; gap:34px; margin-top:30px; }
+.hstat .n { font-family:"Sora"; font-weight:800; font-size:30px; letter-spacing:-.03em; }
+.hstat .n .grad { display:inline; }
+.hstat .l { font-size:13px; color:var(--slate); font-weight:600; margin-top:2px; }
+
+/* =========================================================
+   DARK DASHBOARD CARD (reused everywhere)
+   ========================================================= */
+.dash {
+  background: linear-gradient(180deg, #0C1B2F 0%, #091525 100%);
+  border:1px solid var(--panel-line); border-radius: var(--r-lg);
+  box-shadow: var(--sh-dark); color: var(--panel-ink); padding:22px; position:relative; overflow:hidden;
+}
+.dash::before { content:""; position:absolute; inset:0;
+  background: radial-gradient(600px 200px at 80% -10%, rgba(30,111,232,.22), transparent 70%); pointer-events:none; }
+.dash-head { display:flex; align-items:center; justify-content:space-between; position:relative; z-index:1;
+  padding-bottom:16px; border-bottom:1px solid var(--panel-line); }
+.dash-title { font-size:12.5px; font-weight:700; letter-spacing:.13em; text-transform:uppercase; color:var(--panel-sub); }
+.dash-title b { color:var(--panel-ink); }
+.live { display:inline-flex; align-items:center; gap:7px; font-size:11.5px; font-weight:800; letter-spacing:.1em; color:#34E3A8; }
+.live .blip { width:7px; height:7px; border-radius:50%; background:#34E3A8; box-shadow:0 0 0 0 rgba(52,227,168,.5); animation: blip 1.8s infinite; }
+@keyframes blip { 0%{box-shadow:0 0 0 0 rgba(52,227,168,.5);} 70%{box-shadow:0 0 0 8px rgba(52,227,168,0);} 100%{box-shadow:0 0 0 0 rgba(52,227,168,0);} }
+
+.kpi-row { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:16px; position:relative; z-index:1; }
+.kpi { background: rgba(255,255,255,.035); border:1px solid var(--panel-line); border-radius:14px; padding:14px; }
+.kpi .k { font-size:10.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--panel-sub); }
+.kpi .v { font-family:"Sora"; font-weight:800; font-size:26px; margin-top:6px; letter-spacing:-.02em; }
+.kpi .v.cyan { color:#3FC8E6; } .kpi .v.green { color:#34E3A8; } .kpi .v.blue { color:#5C9CFF; }
+.kpi .d { font-size:11.5px; color:var(--panel-sub); margin-top:3px; display:flex; align-items:center; gap:4px; }
+.kpi .d.up { color:#34E3A8; }
+
+/* chat bubbles inside dash */
+.feed { margin-top:16px; position:relative; z-index:1; }
+.feed-head { display:flex; align-items:center; justify-content:space-between; font-size:11.5px; font-weight:700;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--panel-sub); margin-bottom:12px; }
+.bubble { display:flex; gap:10px; margin-bottom:10px; align-items:flex-start; }
+.bubble.ai { flex-direction:row-reverse; }
+.avatar { width:26px; height:26px; flex:none; border-radius:8px; display:grid; place-items:center; font-size:11px; font-weight:800;
+  background:rgba(255,255,255,.08); color:var(--panel-sub); }
+.avatar.ai { background:var(--grad-cta); color:#fff; }
+.msg { max-width:78%; background:rgba(255,255,255,.05); border:1px solid var(--panel-line); border-radius:13px; padding:11px 14px; font-size:13.5px; color:#D8E6F8; line-height:1.45; }
+.bubble.ai .msg { background:rgba(30,111,232,.16); border-color:rgba(92,156,255,.3); }
+.senti { display:inline-flex; align-items:center; gap:7px; margin-top:6px; font-size:11px; }
+.senti b { padding:2px 8px; border-radius:var(--pill); font-weight:800; }
+.senti .neg { background:rgba(245,158,66,.16); color:#F6B25A; }
+.senti .pos { background:rgba(52,227,168,.16); color:#34E3A8; }
+.senti .res { background:rgba(52,227,168,.16); color:#34E3A8; }
+.senti span { color:var(--panel-sub); }
+
+/* progress bars */
+.bars { margin-top:14px; position:relative; z-index:1; }
+.bar-row { margin-bottom:11px; }
+.bar-row .top { display:flex; justify-content:space-between; font-size:12.5px; color:#C6D6EC; margin-bottom:6px; }
+.bar-row .top b { color:#fff; }
+.track { height:7px; border-radius:var(--pill); background:rgba(255,255,255,.08); overflow:hidden; }
+.fill { height:100%; border-radius:var(--pill); background:var(--grad-cta); width:0; transition: width 1.2s cubic-bezier(.2,.7,.2,1); }
+
+/* pipeline steps */
+.steps { display:flex; flex-direction:column; gap:9px; margin-top:16px; position:relative; z-index:1; }
+.step { display:flex; align-items:center; gap:13px; padding:14px; border-radius:14px;
+  background:rgba(255,255,255,.035); border:1px solid var(--panel-line); transition:.3s; }
+.step.done { background:rgba(33,192,138,.10); border-color:rgba(52,227,168,.32); }
+.step .sn { width:30px; height:30px; flex:none; border-radius:9px; display:grid; place-items:center; font-weight:800; font-size:13px;
+  background:rgba(63,200,230,.14); color:#3FC8E6; }
+.step.done .sn { background:rgba(52,227,168,.2); color:#34E3A8; }
+.step .stitle { font-weight:700; font-size:14px; color:#EAF2FF; }
+.step .ssub { font-size:12px; color:var(--panel-sub); margin-top:1px; }
+.step .check { margin-left:auto; width:20px; height:20px; color:#34E3A8; }
+
+.insight { margin-top:14px; padding:14px 16px; border-radius:14px; position:relative; z-index:1;
+  background:rgba(30,111,232,.12); border:1px solid rgba(92,156,255,.26); }
+.insight .il { display:flex; align-items:center; gap:7px; font-size:11px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:#5C9CFF; }
+.insight p { font-size:13px; color:#D8E6F8; margin-top:6px; line-height:1.5; }
+
+/* =========================================================
+   SECTION HEADERS
+   ========================================================= */
+.sec-head { max-width:720px; }
+.sec-head.center { margin:0 auto; text-align:center; }
+.sec-head .eyebrow { margin-bottom:18px; }
+.sec-head h2 { font-size:clamp(32px,3.6vw,50px); font-weight:800; letter-spacing:-.03em; }
+.sec-head p { margin-top:18px; }
+
+/* =========================================================
+   PROCESS (How we do it)
+   ========================================================= */
+.process { display:grid; grid-template-columns: 1fr 1.25fr; gap:64px; align-items:center; }
+.proc-list { display:flex; flex-direction:column; gap:6px; }
+.proc-item { display:flex; gap:20px; padding:24px; border-radius:var(--r); border:1px solid transparent; transition:.25s; cursor:default; position:relative; }
+.proc-item:hover { background:#fff; border-color:var(--line); box-shadow:var(--sh-1); }
+.proc-num { width:46px; height:46px; flex:none; border-radius:13px; display:grid; place-items:center; font-family:"Sora";
+  font-weight:800; font-size:18px; background:var(--accent-soft); color:var(--accent); transition:.25s; }
+.proc-item:hover .proc-num { background:var(--grad-cta); color:#fff; }
+.proc-item h3 { font-size:20px; font-weight:700; }
+.proc-item p { margin-top:8px; font-size:15px; color:var(--slate); }
+.proc-visual { align-self:stretch; }
+
+/* =========================================================
+   FEATURE CARDS GRID (what sets us apart)
+   ========================================================= */
+.cards { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+.fcard { background:#fff; border:1px solid var(--line); border-radius:var(--r); padding:30px; transition:.25s; position:relative; overflow:hidden; }
+.fcard:hover { transform:translateY(-4px); box-shadow:var(--sh-2); border-color:var(--line-2); }
+.fcard .ico { width:52px; height:52px; border-radius:15px; display:grid; place-items:center; margin-bottom:22px; }
+.fcard .ico svg { width:24px; height:24px; }
+.ico.cyan { background:rgba(16,166,201,.12); color:var(--cyan); }
+.ico.blue { background:rgba(30,111,232,.10); color:var(--blue); }
+.ico.violet { background:rgba(99,102,241,.10); color:#6366F1; }
+.ico.green { background:rgba(33,192,138,.12); color:var(--green); }
+.fcard h3 { font-size:20px; font-weight:700; }
+.fcard p { margin-top:11px; font-size:15px; color:var(--slate); line-height:1.6; }
+.fcard .seam { position:absolute; right:-30px; top:-30px; width:120px; height:120px; border-radius:50%;
+  background:radial-gradient(circle, var(--accent-soft), transparent 70%); opacity:0; transition:.3s; }
+.fcard:hover .seam { opacity:1; }
+
+/* =========================================================
+   PRODUCT / SOLUTION SPLIT
+   ========================================================= */
+.split { display:grid; grid-template-columns: 1fr 1.12fr; gap:56px; align-items:center; }
+.split.rev { grid-template-columns: 1.12fr 1fr; }
+.split.rev .split-copy { order:2; } .split.rev .split-visual { order:1; }
+.prod-kicker { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+.prod-eyebrow { font-size:13px; font-weight:800; letter-spacing:.13em; text-transform:uppercase; color:var(--cyan); }
+.prod-icon { width:60px; height:60px; border-radius:17px; display:grid; place-items:center; margin-bottom:18px;
+  background:linear-gradient(135deg, rgba(16,166,201,.16), rgba(30,111,232,.12)); color:var(--blue); }
+.prod-icon svg { width:28px; height:28px; }
+.split h3 { font-size:clamp(32px,3.4vw,46px); font-weight:800; letter-spacing:-.03em; margin-top:6px; }
+.split-lead { margin-top:18px; font-size:17px; color:var(--slate); line-height:1.62; max-width:520px; }
+.split-lead b { color:var(--ink); }
+.feat-list { list-style:none; padding:0; margin:26px 0 0; display:flex; flex-direction:column; gap:16px; }
+.feat-list li { display:flex; gap:13px; font-size:15.5px; color:var(--slate); line-height:1.5; }
+.feat-list li b { color:var(--ink); }
+.feat-list .fi { width:24px; height:24px; flex:none; border-radius:8px; display:grid; place-items:center;
+  background:var(--accent-soft); color:var(--accent); margin-top:1px; }
+.feat-list .fi svg { width:13px; height:13px; }
+.chip-row { display:flex; gap:9px; flex-wrap:wrap; margin-top:26px; }
+
+/* index rows (products / solutions list) */
+.index-list { display:flex; flex-direction:column; gap:14px; max-width:1000px; margin:0 auto; }
+.index-row { display:flex; align-items:center; gap:20px; padding:22px 26px; background:#fff;
+  border:1px solid var(--line); border-radius:var(--r); box-shadow:var(--sh-1); transition:.22s; cursor:pointer; }
+.index-row:hover { transform:translateY(-3px); box-shadow:var(--sh-2); border-color:var(--accent); }
+.index-num { width:54px; height:54px; flex:none; border-radius:15px; display:grid; place-items:center; font-family:"Sora";
+  font-weight:800; font-size:18px; background:var(--accent-soft); color:var(--accent); }
+.index-ico { width:52px; height:52px; flex:none; border-radius:14px; display:grid; place-items:center;
+  background:linear-gradient(135deg, rgba(16,166,201,.14), rgba(30,111,232,.1)); color:var(--blue); }
+.index-ico svg { width:24px; height:24px; }
+.index-main { flex:1; min-width:0; }
+.index-main .it { display:flex; align-items:baseline; gap:11px; flex-wrap:wrap; }
+.index-main .it h4 { font-family:"Sora"; font-size:21px; font-weight:800; }
+.index-main .it .kick { font-size:12px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--cyan); }
+.index-main .id { font-size:14.5px; color:var(--slate); margin-top:4px; }
+.index-tags { display:flex; gap:8px; flex:none; }
+.index-arrow { width:40px; height:40px; flex:none; border-radius:50%; display:grid; place-items:center;
+  background:var(--bg-tint); color:var(--accent); transition:.22s; }
+.index-row:hover .index-arrow { background:var(--grad-cta); color:#fff; transform:translateX(3px); }
+
+/* =========================================================
+   STATS BAND
+   ========================================================= */
+.statband { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
+.statband .s { text-align:center; }
+.statband .s .n { font-family:"Sora"; font-weight:800; font-size:clamp(38px,4vw,56px); letter-spacing:-.03em; }
+.statband .s .l { font-size:14.5px; color:var(--panel-sub); margin-top:6px; font-weight:600; }
+.statband .s .n.cyan{color:#3FC8E6;} .statband .s .n.green{color:#34E3A8;} .statband .s .n.blue{color:#5C9CFF;}
+
+/* =========================================================
+   CTA + CONTACT
+   ========================================================= */
+.cta-box { background: var(--panel); border-radius:32px; padding:72px 64px; position:relative; overflow:hidden; box-shadow:var(--sh-dark); }
+.cta-box::before { content:""; position:absolute; inset:0; background:
+  radial-gradient(700px 320px at 18% 0%, rgba(30,111,232,.34), transparent 62%),
+  radial-gradient(640px 320px at 92% 110%, rgba(16,166,201,.32), transparent 60%); }
+.cta-grid { position:relative; z-index:1; display:grid; grid-template-columns:1.2fr 1fr; gap:48px; align-items:center; }
+.cta-box h2 { font-size:clamp(34px,3.6vw,52px); font-weight:800; letter-spacing:-.03em; color:#fff; }
+.cta-box .lead { color:#B9CCE6; margin-top:18px; }
+.cta-points { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:14px; }
+.cta-points li { display:flex; gap:12px; align-items:center; color:#DCE8F8; font-size:15.5px; font-weight:600; }
+.cta-points .fi { width:26px; height:26px; flex:none; border-radius:8px; display:grid; place-items:center; background:rgba(52,227,168,.16); color:#34E3A8; }
+.cta-points .fi svg{width:15px;height:15px;}
+
+/* contact form */
+.form-card { background:#fff; border:1px solid var(--line); border-radius:var(--r-lg); padding:34px; box-shadow:var(--sh-2); }
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.field { margin-top:18px; }
+.field:first-child { margin-top:0; }
+.field label { display:block; font-size:11.5px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--slate-2); margin-bottom:8px; }
+.field input, .field select, .field textarea { width:100%; border:1px solid var(--line-2); border-radius:var(--r-sm);
+  padding:14px 16px; font-family:inherit; font-size:15px; color:var(--ink); background:var(--bg); transition:.18s; }
+.field input:focus, .field select:focus, .field textarea:focus { outline:none; border-color:var(--accent); box-shadow:0 0 0 4px var(--accent-soft); }
+.field textarea { resize:vertical; min-height:120px; }
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.footer { background:var(--panel); color:var(--panel-sub); padding:72px 0 34px; }
+.foot-grid { display:grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap:40px; }
+.foot-brand .brand-word { color:#fff; }
+.foot-brand p { margin-top:18px; max-width:300px; font-size:14.5px; line-height:1.6; }
+.foot-col h5 { color:#fff; font-family:"Sora"; font-size:14px; font-weight:700; letter-spacing:.02em; margin-bottom:16px; }
+.foot-col a { display:block; font-size:14.5px; color:var(--panel-sub); padding:7px 0; transition:.16s; }
+.foot-col a:hover { color:#fff; }
+.foot-bottom { margin-top:54px; padding-top:26px; border-top:1px solid var(--panel-line);
+  display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; font-size:13.5px; }
+.foot-badges { display:flex; gap:10px; flex-wrap:wrap; }
+.foot-badge { display:inline-flex; align-items:center; gap:7px; font-size:12.5px; font-weight:700; color:#B9CCE6;
+  background:rgba(255,255,255,.05); border:1px solid var(--panel-line); border-radius:var(--pill); padding:7px 14px; }
+.foot-badge svg{width:14px;height:14px;color:#34E3A8;}
+
+/* =========================================================
+   SCROLL REVEAL + view transition
+   ========================================================= */
+.reveal { opacity:0; transform: translateY(26px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+.reveal.in { opacity:1; transform:none; }
+.view { animation: none; }
+@keyframes viewIn { from { opacity:0; transform: translateY(10px);} to { opacity:1; transform:none; } }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity:1; transform:none; transition:none; } .view{animation:none;} }
+
+/* =========================================================
+   DENSITY
+   ========================================================= */
+body.density-compact { --section-pad: 84px; }
+body.density-comfy   { --section-pad: 150px; }
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 1080px) {
+  .hero-grid, .process, .split, .split.rev, .cta-grid { grid-template-columns:1fr; gap:40px; }
+  .split.rev .split-copy { order:1; } .split.rev .split-visual { order:2; }
+  .cards { grid-template-columns:1fr 1fr; }
+  .statband { grid-template-columns:1fr 1fr; gap:34px 24px; }
+  .foot-grid { grid-template-columns:1fr 1fr; gap:34px; }
+}
+@media (max-width: 720px) {
+  .wrap { padding:0 22px; }
+  :root { --section-pad: 76px; }
+  .nav-links, .nav-actions .btn-ghost { display:none; }
+  .nav-burger { display:grid; }
+  .cards { grid-template-columns:1fr; }
+  .statband { grid-template-columns:1fr 1fr; }
+  .form-row { grid-template-columns:1fr; }
+  .hero-stats { gap:22px; flex-wrap:wrap; }
+  .cta-box { padding:44px 26px; }
+  .index-row { flex-wrap:wrap; }
+  .index-tags { order:3; }
+}
+
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script>
+// @ds-adherence-ignore -- omelette starter scaffold (raw elements/hex/px by design)
+
+/* BEGIN USAGE */
+// tweaks-panel.jsx
+// Reusable Tweaks shell + form-control helpers.
+// Exports (to window): useTweaks, TweaksPanel, TweakSection, TweakRow, TweakSlider,
+//   TweakToggle, TweakRadio, TweakSelect, TweakText, TweakNumber, TweakColor, TweakButton.
+//
+// Owns the host protocol (listens for __activate_edit_mode / __deactivate_edit_mode,
+// posts __edit_mode_available / __edit_mode_set_keys / __edit_mode_dismissed) so
+// individual prototypes don't re-roll it. Ships a consistent set of controls so you
+// don't hand-draw <input type="range">, segmented radios, steppers, etc.
+//
+// Usage (in an HTML file that loads React + Babel):
+//
+//   const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+//     "primaryColor": "#D97757",
+//     "palette": ["#D97757", "#29261b", "#f6f4ef"],
+//     "fontSize": 16,
+//     "density": "regular",
+//     "dark": false
+//   }/*EDITMODE-END*/;
+//
+//   function App() {
+//     const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+//     return (
+//       <div style={{ fontSize: t.fontSize, color: t.primaryColor }}>
+//         Hello
+//         <TweaksPanel>
+//           <TweakSection label="Typography" />
+//           <TweakSlider label="Font size" value={t.fontSize} min={10} max={32} unit="px"
+//                        onChange={(v) => setTweak('fontSize', v)} />
+//           <TweakRadio  label="Density" value={t.density}
+//                        options={['compact', 'regular', 'comfy']}
+//                        onChange={(v) => setTweak('density', v)} />
+//           <TweakSection label="Theme" />
+//           <TweakColor  label="Primary" value={t.primaryColor}
+//                        options={['#D97757', '#2A6FDB', '#1F8A5B', '#7A5AE0']}
+//                        onChange={(v) => setTweak('primaryColor', v)} />
+//           <TweakColor  label="Palette" value={t.palette}
+//                        options={[['#D97757', '#29261b', '#f6f4ef'],
+//                                  ['#475569', '#0f172a', '#f1f5f9']]}
+//                        onChange={(v) => setTweak('palette', v)} />
+//           <TweakToggle label="Dark mode" value={t.dark}
+//                        onChange={(v) => setTweak('dark', v)} />
+//         </TweaksPanel>
+//       </div>
+//     );
+//   }
+//
+// TweakRadio is the segmented control for 2–3 short options (auto-falls-back to
+// TweakSelect past ~16/~10 chars per label); reach for TweakSelect directly when
+// options are many or long. For color tweaks always curate 3-4 options rather than
+// a free picker; an option can also be a whole 2–5 color palette (the stored value
+// is the array). The Tweak* controls are a floor, not a ceiling — build custom
+// controls inside the panel if a tweak calls for UI they don't cover.
+/* END USAGE */
+// ─────────────────────────────────────────────────────────────────────────────
+
+const __TWEAKS_STYLE = `
+  .twk-panel{position:fixed;right:16px;bottom:16px;z-index:2147483646;width:280px;
+    max-height:calc(100vh - 32px);display:flex;flex-direction:column;
+    transform:scale(var(--dc-inv-zoom,1));transform-origin:bottom right;
+    background:rgba(250,249,247,.78);color:#29261b;
+    -webkit-backdrop-filter:blur(24px) saturate(160%);backdrop-filter:blur(24px) saturate(160%);
+    border:.5px solid rgba(255,255,255,.6);border-radius:14px;
+    box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 12px 40px rgba(0,0,0,.18);
+    font:11.5px/1.4 ui-sans-serif,system-ui,-apple-system,sans-serif;overflow:hidden}
+  .twk-hd{display:flex;align-items:center;justify-content:space-between;
+    padding:10px 8px 10px 14px;cursor:move;user-select:none}
+  .twk-hd b{font-size:12px;font-weight:600;letter-spacing:.01em}
+  .twk-x{appearance:none;border:0;background:transparent;color:rgba(41,38,27,.55);
+    width:22px;height:22px;border-radius:6px;cursor:default;font-size:13px;line-height:1}
+  .twk-x:hover{background:rgba(0,0,0,.06);color:#29261b}
+  .twk-body{padding:2px 14px 14px;display:flex;flex-direction:column;gap:10px;
+    overflow-y:auto;overflow-x:hidden;min-height:0;
+    scrollbar-width:thin;scrollbar-color:rgba(0,0,0,.15) transparent}
+  .twk-body::-webkit-scrollbar{width:8px}
+  .twk-body::-webkit-scrollbar-track{background:transparent;margin:2px}
+  .twk-body::-webkit-scrollbar-thumb{background:rgba(0,0,0,.15);border-radius:4px;
+    border:2px solid transparent;background-clip:content-box}
+  .twk-body::-webkit-scrollbar-thumb:hover{background:rgba(0,0,0,.25);
+    border:2px solid transparent;background-clip:content-box}
+  .twk-row{display:flex;flex-direction:column;gap:5px}
+  .twk-row-h{flex-direction:row;align-items:center;justify-content:space-between;gap:10px}
+  .twk-lbl{display:flex;justify-content:space-between;align-items:baseline;
+    color:rgba(41,38,27,.72)}
+  .twk-lbl>span:first-child{font-weight:500}
+  .twk-val{color:rgba(41,38,27,.5);font-variant-numeric:tabular-nums}
+
+  .twk-sect{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    color:rgba(41,38,27,.45);padding:10px 0 0}
+  .twk-sect:first-child{padding-top:0}
+
+  .twk-field{appearance:none;box-sizing:border-box;width:100%;min-width:0;height:26px;padding:0 8px;
+    border:.5px solid rgba(0,0,0,.1);border-radius:7px;
+    background:rgba(255,255,255,.6);color:inherit;font:inherit;outline:none}
+  .twk-field:focus{border-color:rgba(0,0,0,.25);background:rgba(255,255,255,.85)}
+  select.twk-field{padding-right:22px;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='rgba(0,0,0,.5)' d='M0 0h10L5 6z'/></svg>");
+    background-repeat:no-repeat;background-position:right 8px center}
+
+  .twk-slider{appearance:none;-webkit-appearance:none;width:100%;height:4px;margin:6px 0;
+    border-radius:999px;background:rgba(0,0,0,.12);outline:none}
+  .twk-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;
+    width:14px;height:14px;border-radius:50%;background:#fff;
+    border:.5px solid rgba(0,0,0,.12);box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:default}
+  .twk-slider::-moz-range-thumb{width:14px;height:14px;border-radius:50%;
+    background:#fff;border:.5px solid rgba(0,0,0,.12);box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:default}
+
+  .twk-seg{position:relative;display:flex;padding:2px;border-radius:8px;
+    background:rgba(0,0,0,.06);user-select:none}
+  .twk-seg-thumb{position:absolute;top:2px;bottom:2px;border-radius:6px;
+    background:rgba(255,255,255,.9);box-shadow:0 1px 2px rgba(0,0,0,.12);
+    transition:left .15s cubic-bezier(.3,.7,.4,1),width .15s}
+  .twk-seg.dragging .twk-seg-thumb{transition:none}
+  .twk-seg button{appearance:none;position:relative;z-index:1;flex:1;border:0;
+    background:transparent;color:inherit;font:inherit;font-weight:500;min-height:22px;
+    border-radius:6px;cursor:default;padding:4px 6px;line-height:1.2;
+    overflow-wrap:anywhere}
+
+  .twk-toggle{position:relative;width:32px;height:18px;border:0;border-radius:999px;
+    background:rgba(0,0,0,.15);transition:background .15s;cursor:default;padding:0}
+  .twk-toggle[data-on="1"]{background:#34c759}
+  .twk-toggle i{position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;
+    background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25);transition:transform .15s}
+  .twk-toggle[data-on="1"] i{transform:translateX(14px)}
+
+  .twk-num{display:flex;align-items:center;box-sizing:border-box;min-width:0;height:26px;padding:0 0 0 8px;
+    border:.5px solid rgba(0,0,0,.1);border-radius:7px;background:rgba(255,255,255,.6)}
+  .twk-num-lbl{font-weight:500;color:rgba(41,38,27,.6);cursor:ew-resize;
+    user-select:none;padding-right:8px}
+  .twk-num input{flex:1;min-width:0;height:100%;border:0;background:transparent;
+    font:inherit;font-variant-numeric:tabular-nums;text-align:right;padding:0 8px 0 0;
+    outline:none;color:inherit;-moz-appearance:textfield}
+  .twk-num input::-webkit-inner-spin-button,.twk-num input::-webkit-outer-spin-button{
+    -webkit-appearance:none;margin:0}
+  .twk-num-unit{padding-right:8px;color:rgba(41,38,27,.45)}
+
+  .twk-btn{appearance:none;height:26px;padding:0 12px;border:0;border-radius:7px;
+    background:rgba(0,0,0,.78);color:#fff;font:inherit;font-weight:500;cursor:default}
+  .twk-btn:hover{background:rgba(0,0,0,.88)}
+  .twk-btn.secondary{background:rgba(0,0,0,.06);color:inherit}
+  .twk-btn.secondary:hover{background:rgba(0,0,0,.1)}
+
+  .twk-swatch{appearance:none;-webkit-appearance:none;width:56px;height:22px;
+    border:.5px solid rgba(0,0,0,.1);border-radius:6px;padding:0;cursor:default;
+    background:transparent;flex-shrink:0}
+  .twk-swatch::-webkit-color-swatch-wrapper{padding:0}
+  .twk-swatch::-webkit-color-swatch{border:0;border-radius:5.5px}
+  .twk-swatch::-moz-color-swatch{border:0;border-radius:5.5px}
+
+  .twk-chips{display:flex;gap:6px}
+  .twk-chip{position:relative;appearance:none;flex:1;min-width:0;height:46px;
+    padding:0;border:0;border-radius:6px;overflow:hidden;cursor:default;
+    box-shadow:0 0 0 .5px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.06);
+    transition:transform .12s cubic-bezier(.3,.7,.4,1),box-shadow .12s}
+  .twk-chip:hover{transform:translateY(-1px);
+    box-shadow:0 0 0 .5px rgba(0,0,0,.18),0 4px 10px rgba(0,0,0,.12)}
+  .twk-chip[data-on="1"]{box-shadow:0 0 0 1.5px rgba(0,0,0,.85),
+    0 2px 6px rgba(0,0,0,.15)}
+  .twk-chip>span{position:absolute;top:0;bottom:0;right:0;width:34%;
+    display:flex;flex-direction:column;box-shadow:-1px 0 0 rgba(0,0,0,.1)}
+  .twk-chip>span>i{flex:1;box-shadow:0 -1px 0 rgba(0,0,0,.1)}
+  .twk-chip>span>i:first-child{box-shadow:none}
+  .twk-chip svg{position:absolute;top:6px;left:6px;width:13px;height:13px;
+    filter:drop-shadow(0 1px 1px rgba(0,0,0,.3))}
+`;
+
+// ── useTweaks ───────────────────────────────────────────────────────────────
+// Single source of truth for tweak values. setTweak persists via the host
+// (__edit_mode_set_keys → host rewrites the EDITMODE block on disk).
+function useTweaks(defaults) {
+  const [values, setValues] = React.useState(defaults);
+  // Accepts either setTweak('key', value) or setTweak({ key: value, ... }) so a
+  // useState-style call doesn't write a "[object Object]" key into the persisted
+  // JSON block.
+  const setTweak = React.useCallback((keyOrEdits, val) => {
+    const edits = typeof keyOrEdits === 'object' && keyOrEdits !== null
+      ? keyOrEdits : { [keyOrEdits]: val };
+    setValues((prev) => ({ ...prev, ...edits }));
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits }, '*');
+    // Same-window signal so in-page listeners (deck-stage rail thumbnails)
+    // can react — the parent message only reaches the host, not peers.
+    window.dispatchEvent(new CustomEvent('tweakchange', { detail: edits }));
+  }, []);
+  return [values, setTweak];
+}
+
+// ── TweaksPanel ─────────────────────────────────────────────────────────────
+// Floating shell. Registers the protocol listener BEFORE announcing
+// availability — if the announce ran first, the host's activate could land
+// before our handler exists and the toolbar toggle would silently no-op.
+// The close button posts __edit_mode_dismissed so the host's toolbar toggle
+// flips off in lockstep; the host echoes __deactivate_edit_mode back which
+// is what actually hides the panel.
+function TweaksPanel({ title = 'Tweaks', children }) {
+  const [open, setOpen] = React.useState(false);
+  const dragRef = React.useRef(null);
+  const offsetRef = React.useRef({ x: 16, y: 16 });
+  const PAD = 16;
+
+  const clampToViewport = React.useCallback(() => {
+    const panel = dragRef.current;
+    if (!panel) return;
+    const w = panel.offsetWidth, h = panel.offsetHeight;
+    const maxRight = Math.max(PAD, window.innerWidth - w - PAD);
+    const maxBottom = Math.max(PAD, window.innerHeight - h - PAD);
+    offsetRef.current = {
+      x: Math.min(maxRight, Math.max(PAD, offsetRef.current.x)),
+      y: Math.min(maxBottom, Math.max(PAD, offsetRef.current.y)),
+    };
+    panel.style.right = offsetRef.current.x + 'px';
+    panel.style.bottom = offsetRef.current.y + 'px';
+  }, []);
+
+  React.useEffect(() => {
+    if (!open) return;
+    clampToViewport();
+    if (typeof ResizeObserver === 'undefined') {
+      window.addEventListener('resize', clampToViewport);
+      return () => window.removeEventListener('resize', clampToViewport);
+    }
+    const ro = new ResizeObserver(clampToViewport);
+    ro.observe(document.documentElement);
+    return () => ro.disconnect();
+  }, [open, clampToViewport]);
+
+  React.useEffect(() => {
+    const onMsg = (e) => {
+      const t = e?.data?.type;
+      if (t === '__activate_edit_mode') setOpen(true);
+      else if (t === '__deactivate_edit_mode') setOpen(false);
+    };
+    window.addEventListener('message', onMsg);
+    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+    return () => window.removeEventListener('message', onMsg);
+  }, []);
+
+  const dismiss = () => {
+    setOpen(false);
+    window.parent.postMessage({ type: '__edit_mode_dismissed' }, '*');
+  };
+
+  const onDragStart = (e) => {
+    const panel = dragRef.current;
+    if (!panel) return;
+    const r = panel.getBoundingClientRect();
+    const sx = e.clientX, sy = e.clientY;
+    const startRight = window.innerWidth - r.right;
+    const startBottom = window.innerHeight - r.bottom;
+    const move = (ev) => {
+      offsetRef.current = {
+        x: startRight - (ev.clientX - sx),
+        y: startBottom - (ev.clientY - sy),
+      };
+      clampToViewport();
+    };
+    const up = () => {
+      window.removeEventListener('mousemove', move);
+      window.removeEventListener('mouseup', up);
+    };
+    window.addEventListener('mousemove', move);
+    window.addEventListener('mouseup', up);
+  };
+
+  if (!open) return null;
+  return (
+    <>
+      <style>{__TWEAKS_STYLE}</style>
+      <div ref={dragRef} className="twk-panel" data-omelette-chrome=""
+           style={{ right: offsetRef.current.x, bottom: offsetRef.current.y }}>
+        <div className="twk-hd" onMouseDown={onDragStart}>
+          <b>{title}</b>
+          <button className="twk-x" aria-label="Close tweaks"
+                  onMouseDown={(e) => e.stopPropagation()}
+                  onClick={dismiss}>✕</button>
+        </div>
+        <div className="twk-body">
+          {children}
+        </div>
+      </div>
+    </>
+  );
+}
+
+// ── Layout helpers ──────────────────────────────────────────────────────────
+
+function TweakSection({ label, children }) {
+  return (
+    <>
+      <div className="twk-sect">{label}</div>
+      {children}
+    </>
+  );
+}
+
+function TweakRow({ label, value, children, inline = false }) {
+  return (
+    <div className={inline ? 'twk-row twk-row-h' : 'twk-row'}>
+      <div className="twk-lbl">
+        <span>{label}</span>
+        {value != null && <span className="twk-val">{value}</span>}
+      </div>
+      {children}
+    </div>
+  );
+}
+
+// ── Controls ────────────────────────────────────────────────────────────────
+
+function TweakSlider({ label, value, min = 0, max = 100, step = 1, unit = '', onChange }) {
+  return (
+    <TweakRow label={label} value={`${value}${unit}`}>
+      <input type="range" className="twk-slider" min={min} max={max} step={step}
+             value={value} onChange={(e) => onChange(Number(e.target.value))} />
+    </TweakRow>
+  );
+}
+
+function TweakToggle({ label, value, onChange }) {
+  return (
+    <div className="twk-row twk-row-h">
+      <div className="twk-lbl"><span>{label}</span></div>
+      <button type="button" className="twk-toggle" data-on={value ? '1' : '0'}
+              role="switch" aria-checked={!!value}
+              onClick={() => onChange(!value)}><i /></button>
+    </div>
+  );
+}
+
+function TweakRadio({ label, value, options, onChange }) {
+  const trackRef = React.useRef(null);
+  const [dragging, setDragging] = React.useState(false);
+  // The active value is read by pointer-move handlers attached for the lifetime
+  // of a drag — ref it so a stale closure doesn't fire onChange for every move.
+  const valueRef = React.useRef(value);
+  valueRef.current = value;
+
+  // Segments wrap mid-word once per-segment width runs out. The track is
+  // ~248px (280 panel − 28 body pad − 4 seg pad), each button loses 12px
+  // to its own padding, and 11.5px system-ui averages ~6.3px/char — so 2
+  // options fit ~16 chars each, 3 fit ~10. Past that (or >3 options), fall
+  // back to a dropdown rather than wrap.
+  const labelLen = (o) => String(typeof o === 'object' ? o.label : o).length;
+  const maxLen = options.reduce((m, o) => Math.max(m, labelLen(o)), 0);
+  const fitsAsSegments = maxLen <= ({ 2: 16, 3: 10 }[options.length] ?? 0);
+  if (!fitsAsSegments) {
+    // <select> emits strings — map back to the original option value so the
+    // fallback stays type-preserving (numbers, booleans) like the segment path.
+    const resolve = (s) => {
+      const m = options.find((o) => String(typeof o === 'object' ? o.value : o) === s);
+      return m === undefined ? s : typeof m === 'object' ? m.value : m;
+    };
+    return <TweakSelect label={label} value={value} options={options}
+                        onChange={(s) => onChange(resolve(s))} />;
+  }
+  const opts = options.map((o) => (typeof o === 'object' ? o : { value: o, label: o }));
+  const idx = Math.max(0, opts.findIndex((o) => o.value === value));
+  const n = opts.length;
+
+  const segAt = (clientX) => {
+    const r = trackRef.current.getBoundingClientRect();
+    const inner = r.width - 4;
+    const i = Math.floor(((clientX - r.left - 2) / inner) * n);
+    return opts[Math.max(0, Math.min(n - 1, i))].value;
+  };
+
+  const onPointerDown = (e) => {
+    setDragging(true);
+    const v0 = segAt(e.clientX);
+    if (v0 !== valueRef.current) onChange(v0);
+    const move = (ev) => {
+      if (!trackRef.current) return;
+      const v = segAt(ev.clientX);
+      if (v !== valueRef.current) onChange(v);
+    };
+    const up = () => {
+      setDragging(false);
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', up);
+    };
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', up);
+  };
+
+  return (
+    <TweakRow label={label}>
+      <div ref={trackRef} role="radiogroup" onPointerDown={onPointerDown}
+           className={dragging ? 'twk-seg dragging' : 'twk-seg'}>
+        <div className="twk-seg-thumb"
+             style={{ left: `calc(2px + ${idx} * (100% - 4px) / ${n})`,
+                      width: `calc((100% - 4px) / ${n})` }} />
+        {opts.map((o) => (
+          <button key={o.value} type="button" role="radio" aria-checked={o.value === value}>
+            {o.label}
+          </button>
+        ))}
+      </div>
+    </TweakRow>
+  );
+}
+
+function TweakSelect({ label, value, options, onChange }) {
+  return (
+    <TweakRow label={label}>
+      <select className="twk-field" value={value} onChange={(e) => onChange(e.target.value)}>
+        {options.map((o) => {
+          const v = typeof o === 'object' ? o.value : o;
+          const l = typeof o === 'object' ? o.label : o;
+          return <option key={v} value={v}>{l}</option>;
+        })}
+      </select>
+    </TweakRow>
+  );
+}
+
+function TweakText({ label, value, placeholder, onChange }) {
+  return (
+    <TweakRow label={label}>
+      <input className="twk-field" type="text" value={value} placeholder={placeholder}
+             onChange={(e) => onChange(e.target.value)} />
+    </TweakRow>
+  );
+}
+
+function TweakNumber({ label, value, min, max, step = 1, unit = '', onChange }) {
+  const clamp = (n) => {
+    if (min != null && n < min) return min;
+    if (max != null && n > max) return max;
+    return n;
+  };
+  const startRef = React.useRef({ x: 0, val: 0 });
+  const onScrubStart = (e) => {
+    e.preventDefault();
+    startRef.current = { x: e.clientX, val: value };
+    const decimals = (String(step).split('.')[1] || '').length;
+    const move = (ev) => {
+      const dx = ev.clientX - startRef.current.x;
+      const raw = startRef.current.val + dx * step;
+      const snapped = Math.round(raw / step) * step;
+      onChange(clamp(Number(snapped.toFixed(decimals))));
+    };
+    const up = () => {
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', up);
+    };
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', up);
+  };
+  return (
+    <div className="twk-num">
+      <span className="twk-num-lbl" onPointerDown={onScrubStart}>{label}</span>
+      <input type="number" value={value} min={min} max={max} step={step}
+             onChange={(e) => onChange(clamp(Number(e.target.value)))} />
+      {unit && <span className="twk-num-unit">{unit}</span>}
+    </div>
+  );
+}
+
+// Relative-luminance contrast pick — checkmarks drawn over a swatch need to
+// read on both #111 and #fafafa without per-option configuration. Hex input
+// only (#rgb / #rrggbb); named or rgb()/hsl() colors fall through to "light".
+function __twkIsLight(hex) {
+  const h = String(hex).replace('#', '');
+  const x = h.length === 3 ? h.replace(/./g, (c) => c + c) : h.padEnd(6, '0');
+  const n = parseInt(x.slice(0, 6), 16);
+  if (Number.isNaN(n)) return true;
+  const r = (n >> 16) & 255, g = (n >> 8) & 255, b = n & 255;
+  return r * 299 + g * 587 + b * 114 > 148000;
+}
+
+const __TwkCheck = ({ light }) => (
+  <svg viewBox="0 0 14 14" aria-hidden="true">
+    <path d="M3 7.2 5.8 10 11 4.2" fill="none" strokeWidth="2.2"
+          strokeLinecap="round" strokeLinejoin="round"
+          stroke={light ? 'rgba(0,0,0,.78)' : '#fff'} />
+  </svg>
+);
+
+// TweakColor — curated color/palette picker. Each option is either a single
+// hex string or an array of 1-5 hex strings; the card adapts — a lone color
+// renders solid, a palette renders colors[0] as the hero (left ~2/3) with the
+// rest stacked in a sharp column on the right. onChange emits the
+// option in the shape it was passed (string stays string, array stays array).
+// Without options it falls back to the native color input for back-compat.
+function TweakColor({ label, value, options, onChange }) {
+  if (!options || !options.length) {
+    return (
+      <div className="twk-row twk-row-h">
+        <div className="twk-lbl"><span>{label}</span></div>
+        <input type="color" className="twk-swatch" value={value}
+               onChange={(e) => onChange(e.target.value)} />
+      </div>
+    );
+  }
+  // Native <input type=color> emits lowercase hex per the HTML spec, so
+  // compare case-insensitively. String() guards JSON.stringify(undefined),
+  // which returns the primitive undefined (no .toLowerCase).
+  const key = (o) => String(JSON.stringify(o)).toLowerCase();
+  const cur = key(value);
+  return (
+    <TweakRow label={label}>
+      <div className="twk-chips" role="radiogroup">
+        {options.map((o, i) => {
+          const colors = Array.isArray(o) ? o : [o];
+          const [hero, ...rest] = colors;
+          const sup = rest.slice(0, 4);
+          const on = key(o) === cur;
+          return (
+            <button key={i} type="button" className="twk-chip" role="radio"
+                    aria-checked={on} data-on={on ? '1' : '0'}
+                    aria-label={colors.join(', ')} title={colors.join(' · ')}
+                    style={{ background: hero }}
+                    onClick={() => onChange(o)}>
+              {sup.length > 0 && (
+                <span>
+                  {sup.map((c, j) => <i key={j} style={{ background: c }} />)}
+                </span>
+              )}
+              {on && <__TwkCheck light={__twkIsLight(hero)} />}
+            </button>
+          );
+        })}
+      </div>
+    </TweakRow>
+  );
+}
+
+function TweakButton({ label, onClick, secondary = false }) {
+  return (
+    <button type="button" className={secondary ? 'twk-btn secondary' : 'twk-btn'}
+            onClick={onClick}>{label}</button>
+  );
+}
+
+Object.assign(window, {
+  useTweaks, TweaksPanel, TweakSection, TweakRow,
+  TweakSlider, TweakToggle, TweakRadio, TweakSelect,
+  TweakText, TweakNumber, TweakColor, TweakButton,
+});
+
+  </script>
+  <script type="text/babel">
+/* icons.jsx — clean stroke icon set (replaces emoji), exported to window */
+(function () {
+  const P = {
+    bolt: <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" />,
+    shield: <g><path d="M12 3 5 6v5c0 4.5 3 7.5 7 9 4-1.5 7-4.5 7-9V6l-7-3Z" /><path d="m9 12 2 2 4-4" /></g>,
+    clock: <g><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></g>,
+    globe: <g><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18" /></g>,
+    chart: <g><path d="M3 3v18h18" /><rect x="7" y="11" width="3" height="6" rx="1" /><rect x="12" y="7" width="3" height="10" rx="1" /><rect x="17" y="13" width="3" height="4" rx="1" /></g>,
+    heart: <path d="M12 20s-7-4.3-9.3-8.6C1 8 2.5 4.5 6 4.5c2 0 3.2 1.2 4 2.3.8-1.1 2-2.3 4-2.3 3.5 0 5 3.5 3.3 6.9C19 15.7 12 20 12 20Z" />,
+    chat: <path d="M4 5h16v11H8l-4 3V5Z" />,
+    users: <g><circle cx="9" cy="8" r="3" /><path d="M3 20c0-3.3 2.7-5 6-5s6 1.7 6 5" /><path d="M16 5.5a3 3 0 0 1 0 5.8M21 20c0-2.6-1.5-4.2-3.5-4.8" /></g>,
+    monitor: <g><rect x="3" y="4" width="18" height="13" rx="2" /><path d="M9 21h6M12 17v4" /></g>,
+    grid: <g><rect x="4" y="4" width="6" height="6" rx="1.6" /><rect x="14" y="4" width="6" height="6" rx="1.6" /><rect x="4" y="14" width="6" height="6" rx="1.6" /><rect x="14" y="14" width="6" height="6" rx="1.6" /></g>,
+    check: <path d="m5 12 5 5L20 6" />,
+    arrow: <path d="M5 12h14m-6-6 6 6-6 6" />,
+    arrowUR: <path d="M7 17 17 7m0 0H8m9 0v9" />,
+    mail: <g><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></g>,
+    calendar: <g><rect x="3" y="5" width="18" height="16" rx="2" /><path d="M3 9h18M8 3v4M16 3v4" /></g>,
+    spark: <path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18" />,
+    lock: <g><rect x="5" y="11" width="14" height="9" rx="2" /><path d="M8 11V8a4 4 0 0 1 8 0v3" /></g>,
+    eye: <g><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z" /><circle cx="12" cy="12" r="3" /></g>,
+    rocket: <g><path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2M14 4c3-.5 6 2.5 5.5 5.5L13 16l-5-5L14 4Z" /><circle cx="14.5" cy="9.5" r="1.4" /></g>,
+    bulb: <g><path d="M9 18h6M10 21h4" /><path d="M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.4 1 2.5h6c0-1.1.3-1.8 1-2.5A6 6 0 0 0 12 3Z" /></g>,
+    chevron: <path d="m6 9 6 6 6-6" />,
+    menu: <path d="M4 7h16M4 12h16M4 17h16" />,
+    play: <path d="m8 5 11 7-11 7V5Z" />,
+    layers: <g><path d="m12 3 9 5-9 5-9-5 9-5Z" /><path d="m3 13 9 5 9-5" /></g>,
+    target: <g><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="5" /><circle cx="12" cy="12" r="1.5" /></g>,
+    qr: <g><rect x="4" y="4" width="6" height="6" rx="1" /><rect x="14" y="4" width="6" height="6" rx="1" /><rect x="4" y="14" width="6" height="6" rx="1" /><path d="M14 14h2v2M18 18h2M18 14v.01M14 18v2" /></g>,
+    gauge: <g><path d="M4 18a8 8 0 1 1 16 0" /><path d="m12 14 4-4" /></g>,
+    link: <g><path d="M9 13a4 4 0 0 0 6 0l2-2a4 4 0 0 0-6-6l-1 1" /><path d="M15 11a4 4 0 0 0-6 0l-2 2a4 4 0 0 0 6 6l1-1" /></g>,
+    linkedin: <g><rect x="3" y="3" width="18" height="18" rx="3" /><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 17v-7" /></g>,
+  };
+
+  function Icon({ name, style, className }) {
+    const inner = P[name] || P.spark;
+    return (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9"
+        strokeLinecap="round" strokeLinejoin="round" style={style} className={className}>
+        {inner}
+      </svg>
+    );
+  }
+
+  // Brand logo mark — simple stacked-chevron geometry with brand gradient
+  function Logo({ size = 38 }) {
+    const id = "lg" + Math.round(size);
+    return (
+      <svg width={size} height={size} viewBox="0 0 48 48" fill="none" aria-label="Experion Labs">
+        <defs>
+          <linearGradient id={id} x1="6" y1="42" x2="42" y2="6" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#1B3C77" /><stop offset=".4" stopColor="#1E6FE8" />
+            <stop offset=".72" stopColor="#10A6C9" /><stop offset="1" stopColor="#2ECF9A" />
+          </linearGradient>
+        </defs>
+        <path d="M24 5 9 14v6l15-9 15 9v-6L24 5Z" fill={`url(#${id})`} />
+        <path d="M24 17 9 26v6l15-9 15 9v-6l-15-9Z" fill={`url(#${id})`} opacity=".8" />
+        <path d="M24 29 9 38v5l15-9 15 9v-5l-15-9Z" fill={`url(#${id})`} opacity=".6" />
+      </svg>
+    );
+  }
+
+  window.Icon = Icon;
+  window.Logo = Logo;
+})();
+
+  </script>
+  <script type="text/babel">
+/* data.jsx — site content (from current Experion Labs site), exported to window */
+(function () {
+  const PRODUCTS = [
+    {
+      id: "iretailos", name: "iRetailOS", kicker: "Flow & Queueing", icon: "grid",
+      audience: ["Customers", "Operations"],
+      teaser: "QR-based agentic queueing & customer flow orchestration · built on AWS Agent Core",
+      lead: "A <b>QR-based agentic queueing & customer flow solution</b> built on AWS Agent Core. Customers scan, get a virtual token, and an autonomous agent orchestrates their entire visit — from arrival to service to feedback.",
+      features: [
+        ["Scan-to-queue", "customers join from their phone — no kiosks, no paper tickets, no lines."],
+        ["Autonomous flow agent", "predicts bottlenecks and rebalances counters in real time."],
+        ["Live floor view", "managers see queue depth, wait times and CSAT on one dashboard."],
+        ["WhatsApp updates", "proactive status and ticketing that keeps customers informed."],
+      ],
+      chips: ["AWS Agent Core", "QR Queueing", "Predictive AI", "WhatsApp Ticketing", "Live Dashboard"],
+      dash: "floor",
+    },
+    {
+      id: "iverifier", name: "iVerifier", kicker: "Identity & Trust", icon: "shield",
+      audience: ["Customers"],
+      teaser: "AI-driven customer identity management · biometric liveness · 150+ countries · <3s verify",
+      lead: "<b>Customer identity management</b> for the agentic era. Proprietary AI verifies who your customer is — instantly, globally, with zero friction.",
+      features: [
+        ["3D liveness detection", "defeats spoofing, deepfakes, and presentation attacks."],
+        ["150+ country coverage", "for passports, IDs, driver's licences — OCR + NFC."],
+        ["Real-time risk scoring", "flags fraud signals before they reach your team."],
+        ["SDK + API drop-in", "for mobile, web, and kiosk — under a week to integrate."],
+      ],
+      chips: ["Mobile SDK", "Web SDK", "Risk Engine", "Compliant KYC"],
+      dash: "pipeline",
+    },
+  ];
+
+  const SOLUTIONS = [
+    {
+      id: "agents", name: "AI Agents Framework", kicker: "Three Pillars", icon: "monitor",
+      tags: ["All Pillars"],
+      teaser: "Three agentic pillars built natively on AWS Agent Core · Customers · Frontline · Operations",
+      lead: "Three agentic pillars — built natively on <b>AWS Agent Core</b> — that cover every touchpoint of the customer journey, from first contact to resolution.",
+      pillars: [
+        { n: "01", aud: "For Customers", icon: "chat", title: "AI Agents That Handle Customer Support End-to-End",
+          points: ["Voice-native accuracy in noisy real-world calls", "Multi-step workflows across CRM, billing, ID", "Drive containment, reduce cost per interaction"] },
+        { n: "02", aud: "For Frontline", icon: "users", title: "AI Agents That Empower Every Frontline Employee",
+          points: ["Arrive prepared with full customer context", "Real-time knowledge & next-best-action nudges", "Auto wrap-up: summaries, dispositions, CRM sync"] },
+        { n: "03", aud: "For Operations", icon: "chart", title: "AI Agents That Run Your Operation, Not Just Report on It",
+          points: ["100% interaction coverage, not 2% sampling", "Autonomous coaching delivered at scale", "Root-cause pattern detection in real time"] },
+      ],
+      chips: ["ISO 42001", "SOC 2", "GDPR-ready", "Voice-native", "Real-time"],
+    },
+    {
+      id: "pulse", name: "Experion Pulse", kicker: "Omnichannel CX Analytics & Sentiment", icon: "chart",
+      tags: ["Analytics", "Sentiment"],
+      teaser: "Unified executive command center · real-time NPS · live sentiment scoring · agentic call center · all channels in one view",
+      problem: "Customer feedback is fragmented across siloed channels — retail branches, digital apps, support tickets, and surveys. Meanwhile, individual interactions carry undetected friction and negative sentiment that goes unresolved. Executives lack a single, real-time source of truth.",
+      solution: "A unified intelligence platform that combines <b>real-time sentiment analysis</b> on every call, chat, and survey with a <b>centralized executive command center</b> — giving leadership live NPS, sentiment scoring, and agentic resolution in one view.",
+      impact: "Gives leadership absolute clarity to proactively intercept friction points, while agentic assistants resolve interactions autonomously — measurably boosting CSAT and customer lifetime value.",
+      features: [
+        ["Real-time sentiment scoring", "on every call, chat, and post-service survey."],
+        ["Agentic support assistants", "handle tier-1 queries end-to-end — autonomously."],
+        ["Live escalation triggers", "route negative-sentiment conversations to human experts instantly."],
+      ],
+      dash: "pulse",
+    },
+  ];
+
+  const PILLARS = [
+    { n: "1", title: "Rapid Integration, Immediate Impact", icon: "bolt", color: "cyan",
+      body: "We deliver quick operational impact without demanding a costly infrastructure overhaul. Our intelligent layers integrate directly into your existing hardware, software stacks, and systems of record — modernizing your enterprise from day one." },
+    { n: "2", title: "Radical Simplicity and Speed", icon: "spark", color: "blue",
+      body: "Our focus is relentlessly narrow: making the end-user experience simple, friction-free, and incredibly fast. We strip away cognitive load and step-count hurdles so every interaction is fluid and entirely intuitive." },
+    { n: "3", title: "Agentic Optimization & Zero Wait States", icon: "target", color: "violet",
+      body: "We deploy autonomous, agentic capabilities that orchestrate real-time workflows. By predicting bottlenecks before they occur, our platforms maximize throughput and eliminate structural delays." },
+  ];
+
+  const APART = [
+    { icon: "bolt", color: "cyan", title: "Agentic-First by Design",
+      body: "Our entire platform is orchestrated by autonomous agents — not bolt-on AI. That means faster decisions, lower operational overhead, and continuous improvement." },
+    { icon: "shield", color: "blue", title: "AWS Agent Core Native",
+      body: "Built on the most trusted enterprise AI infrastructure — giving you military-grade security, infinite scalability, and compliance out of the box." },
+    { icon: "clock", color: "violet", title: "Weeks, Not Quarters",
+      body: "Our SDK-first approach means integration is measured in days. Most customers go from signed contract to live deployment in under 4 weeks." },
+    { icon: "globe", color: "cyan", title: "150+ Country Coverage",
+      body: "From identity verification to queue management, our platform is built to operate across the globe — localised, compliant, and ready from day one." },
+    { icon: "chart", color: "blue", title: "Measurable ROI",
+      body: "Every product is designed with clear, trackable KPIs. Customers see average wait-time reductions of 60%, CSAT improvements of 18%, and fraud rates cut by over 90%." },
+    { icon: "heart", color: "violet", title: "Human-Centric Always",
+      body: "We don't build technology for technology's sake. Every product decision is anchored to a real human outcome — for the customer, the frontline employee, and the executive." },
+  ];
+
+  const STATS = [
+    { n: "60%", c: "cyan", l: "Avg. wait-time reduction" },
+    { n: "99.9%", c: "green", l: "Identity verification accuracy" },
+    { n: "150+", c: "blue", l: "Countries supported" },
+    { n: "<4wk", c: "cyan", l: "Contract to live deployment" },
+  ];
+
+  window.DATA = { PRODUCTS, SOLUTIONS, PILLARS, APART, STATS };
+})();
+
+  </script>
+  <script type="text/babel">
+/* dashboards.jsx — animated dark "command center" mockups, exported to window */
+(function () {
+  const { useState, useEffect, useRef } = React;
+
+  // animate a fill bar / counter when scrolled into view
+  function useInView(threshold = 0.3) {
+    const ref = useRef(null);
+    const [seen, setSeen] = useState(false);
+    useEffect(() => {
+      const el = ref.current; if (!el) return;
+      const r = el.getBoundingClientRect();
+      if (r.top < (window.innerHeight || 800) * 0.95) { setSeen(true); return; }
+      let done = false;
+      const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { done = true; setSeen(true); io.disconnect(); } }, { threshold });
+      io.observe(el);
+      const fb = setTimeout(() => { if (!done) setSeen(true); }, 1500);
+      return () => { io.disconnect(); clearTimeout(fb); };
+    }, []);
+    return [ref, seen];
+  }
+
+  function Bars({ rows }) {
+    const [ref, seen] = useInView();
+    return (
+      <div className="bars" ref={ref}>
+        {rows.map((r, i) => (
+          <div className="bar-row" key={i}>
+            <div className="top"><span>{r.label}</span><b>{r.val}%</b></div>
+            <div className="track"><div className="fill" style={{ width: seen ? r.val + "%" : 0, transitionDelay: i * 120 + "ms" }} /></div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  /* ---- Experion Pulse — live command center ---- */
+  function PulseDash() {
+    const [ref, seen] = useInView();
+    return (
+      <div className="dash" ref={ref}>
+        <div className="dash-head">
+          <div className="dash-title">Experion Pulse — <b>Live Command Center</b></div>
+          <div className="live"><span className="blip" />LIVE</div>
+        </div>
+        <div className="kpi-row">
+          <div className="kpi"><div className="k">NPS Score</div><div className="v cyan">+72</div><div className="d up"><Icon name="arrow" style={{width:12,height:12,transform:"rotate(-45deg)"}} />+8 MoM</div></div>
+          <div className="kpi"><div className="k">Sentiment</div><div className="v green">94%</div><div className="d">Positive</div></div>
+          <div className="kpi"><div className="k">Channels</div><div className="v blue">8</div><div className="d">Active</div></div>
+        </div>
+        <div className="feed">
+          <div className="feed-head"><span>Live Sentiment Analysis · Call #4827</span><span className="live"><span className="blip" />ANALYZING</span></div>
+          <div className="bubble"><div className="avatar">C</div><div><div className="msg">Hi, I've been waiting 2 weeks for my card replacement.</div><div className="senti"><b className="neg">Negative · −0.6</b><span>frustration detected</span></div></div></div>
+          <div className="bubble ai"><div className="avatar ai">AI</div><div><div className="msg">Replacement dispatched yesterday — delivery tomorrow. Want an SMS update?</div><div className="senti"><b className="res">Resolved</b><span>notify_subscribe</span></div></div></div>
+          <div className="bubble"><div className="avatar">C</div><div><div className="msg">Yes please — thank you!</div><div className="senti"><b className="pos">Positive · +0.8</b><span>resolution acknowledged</span></div></div></div>
+        </div>
+        <div style={{ marginTop: 16, position: "relative", zIndex: 1 }}>
+          <div className="feed-head"><span>Channel Satisfaction</span></div>
+          <Bars rows={[{ label: "Retail Branches", val: 91 }, { label: "Digital App", val: 96 }, { label: "Support Tickets", val: 83 }]} />
+        </div>
+        <div className="insight">
+          <div className="il"><Icon name="bolt" style={{ width: 13, height: 13 }} />AI Insight</div>
+          <p>Support-ticket sentiment dropped 6% in the last 48h. Root cause: checkout-flow delay on web. Recommend immediate UX review.</p>
+        </div>
+      </div>
+    );
+  }
+
+  /* ---- iVerifier — verification pipeline ---- */
+  function PipelineDash() {
+    const steps = [
+      { t: "Document capture", s: "Passport · ID · DL · 150+ countries" },
+      { t: "Biometric liveness", s: "3D face detection · anti-spoof" },
+      { t: "Risk scoring", s: "Real-time fraud engine" },
+    ];
+    const [stage, setStage] = useState(0);
+    useEffect(() => { const id = setInterval(() => setStage(s => (s + 1) % 5), 1100); return () => clearInterval(id); }, []);
+    return (
+      <div className="dash">
+        <div className="dash-head">
+          <div className="dash-title">Verification Pipeline</div>
+          <div className="live"><span className="blip" />2.3s avg</div>
+        </div>
+        <div className="steps">
+          {steps.map((st, i) => (
+            <div className={"step" + (stage > i ? " done" : "")} key={i}>
+              <div className="sn">{i + 1}</div>
+              <div><div className="stitle">{st.t}</div><div className="ssub">{st.s}</div></div>
+              {stage > i && <Icon name="check" className="check" />}
+            </div>
+          ))}
+          <div className={"step" + (stage >= 4 ? " done" : "")} style={{ background: stage >= 4 ? "rgba(33,192,138,.14)" : undefined }}>
+            <div className="sn" style={{ background: stage >= 4 ? "rgba(52,227,168,.22)" : undefined, color: stage >= 4 ? "#34E3A8" : undefined }}><Icon name="check" style={{ width: 15, height: 15 }} /></div>
+            <div><div className="stitle">Identity verified</div><div className="ssub">99.9% accuracy · ready to onboard</div></div>
+          </div>
+        </div>
+        <div className="kpi-row" style={{ marginTop: 16 }}>
+          <div className="kpi"><div className="v cyan" style={{ fontSize: 24 }}>99.9%</div><div className="k" style={{ marginTop: 4 }}>Accuracy</div></div>
+          <div className="kpi"><div className="v blue" style={{ fontSize: 24 }}>2.3s</div><div className="k" style={{ marginTop: 4 }}>Avg verify</div></div>
+          <div className="kpi"><div className="v green" style={{ fontSize: 24 }}>150+</div><div className="k" style={{ marginTop: 4 }}>Countries</div></div>
+        </div>
+      </div>
+    );
+  }
+
+  /* ---- iRetailOS — live floor view ---- */
+  function FloorDash() {
+    const [wait, setWait] = useState(4);
+    useEffect(() => { const id = setInterval(() => setWait(w => (w % 6) + 3), 2200); return () => clearInterval(id); }, []);
+    const counters = [
+      { id: "#A42", c: "Counter 1 · serving", t: "2m" },
+      { id: "#A43", c: "Counter 2 · serving", t: "5m" },
+      { id: "#A44", c: "Counter 3 · waiting", t: "est. 4m" },
+    ];
+    return (
+      <div className="dash">
+        <div className="dash-head">
+          <div className="dash-title">iRetailOS — <b>Live Floor View</b></div>
+          <div className="live"><span className="blip" />LIVE</div>
+        </div>
+        <div className="kpi-row">
+          <div className="kpi"><div className="k">In Queue</div><div className="v cyan">23</div></div>
+          <div className="kpi"><div className="k">Avg Wait</div><div className="v blue">{wait}m</div></div>
+          <div className="kpi"><div className="k">CSAT</div><div className="v green">9.2</div></div>
+        </div>
+        <div className="steps">
+          {counters.map((c, i) => (
+            <div className="step" key={i} style={{ borderLeft: "3px solid " + (i === 2 ? "rgba(245,158,66,.5)" : "rgba(52,227,168,.5)") }}>
+              <div className="sn" style={{ background: "rgba(63,200,230,.14)", color: "#3FC8E6" }}>{c.id.replace("#", "")}</div>
+              <div><div className="stitle">{c.id}</div><div className="ssub">{c.c}</div></div>
+              <b style={{ marginLeft: "auto", color: i === 2 ? "#F6B25A" : "#34E3A8", fontSize: 14 }}>{c.t}</b>
+            </div>
+          ))}
+        </div>
+        <div className="insight" style={{ background: "rgba(255,255,255,.04)", borderColor: "var(--panel-line)" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 13 }}>
+            <div style={{ width: 46, height: 46, flex: "none", borderRadius: 10, display: "grid", placeItems: "center", background: "#fff" }}>
+              <Icon name="qr" style={{ width: 26, height: 26, color: "#091525" }} />
+            </div>
+            <div><div className="stitle">Scan to join queue</div><div className="ssub">qr.experionlabs.com/branch-21</div></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  function Dash({ kind }) {
+    if (kind === "pulse") return <PulseDash />;
+    if (kind === "pipeline") return <PipelineDash />;
+    if (kind === "floor") return <FloorDash />;
+    return <PulseDash />;
+  }
+
+  /* ---- Auto-cycling product showcase (hero right column) ---- */
+  function ProductShowcase({ go }) {
+    const items = [
+      { id: "iverifier", name: "iVerifier", kick: "Identity", icon: "shield", kind: "pipeline", route: ["products", "iverifier"] },
+      { id: "iretailos", name: "iRetailOS", kick: "Queueing", icon: "grid", kind: "floor", route: ["products", "iretailos"] },
+      { id: "pulse", name: "Experion Pulse", kick: "Analytics", icon: "chart", kind: "pulse", route: ["solutions", "pulse"] },
+    ];
+    const DUR = 5400;
+    const [i, setI] = useState(0);
+    const [paused, setPaused] = useState(false);
+    const innerRef = useRef(null);
+    const [h, setH] = useState();
+
+    useEffect(() => {
+      if (paused) return;
+      const id = setTimeout(() => setI((v) => (v + 1) % items.length), DUR);
+      return () => clearTimeout(id);
+    }, [i, paused]);
+
+    React.useLayoutEffect(() => {
+      if (innerRef.current) setH(innerRef.current.offsetHeight);
+    }, [i]);
+
+    const active = items[i];
+    return (
+      <div className="showcase" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+        <div className="sc-tabs">
+          {items.map((it, n) => (
+            <button key={it.id} className={"sc-tab" + (n === i ? " on" : "")} onClick={() => setI(n)}>
+              <span className="sc-ico"><Icon name={it.icon} /></span>
+              <span className="sc-tx"><b>{it.name}</b><i>{it.kick}</i></span>
+              {n === i && <span className="sc-prog" style={{ animationDuration: DUR + "ms", animationPlayState: paused ? "paused" : "running" }} />}
+            </button>
+          ))}
+        </div>
+        <div className="sc-stage" style={{ height: h }}>
+          <div className="sc-fade" key={active.id} ref={innerRef}>
+            <Dash kind={active.kind} />
+          </div>
+        </div>
+        <button className="sc-cta" onClick={() => go(active.route[0], active.route[1])}>
+          Explore {active.name} <Icon name="arrow" style={{ width: 15, height: 15 }} />
+        </button>
+      </div>
+    );
+  }
+
+  window.Dash = Dash;
+  window.ProductShowcase = ProductShowcase;
+  window.useInView = useInView;
+})();
+
+  </script>
+  <script type="text/babel">
+/* shell.jsx — Nav, Footer, Reveal — exported to window */
+(function () {
+  const { useState, useEffect, useRef } = React;
+
+  /* scroll-reveal wrapper */
+  function Reveal({ children, delay = 0, style, className = "" }) {
+    const ref = useRef(null);
+    const [seen, setSeen] = useState(false);
+    useEffect(() => {
+      const el = ref.current; if (!el) return;
+      // already in view on mount → reveal immediately
+      const r = el.getBoundingClientRect();
+      if (r.top < (window.innerHeight || 800) * 0.95) { setSeen(true); return; }
+      let done = false;
+      const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { done = true; setSeen(true); io.disconnect(); } }, { threshold: 0.12 });
+      io.observe(el);
+      // safety: never let content stay hidden if IO doesn't fire
+      const fb = setTimeout(() => { if (!done) setSeen(true); }, 1500);
+      return () => { io.disconnect(); clearTimeout(fb); };
+    }, []);
+    return <div ref={ref} className={"reveal " + (seen ? "in " : "") + className} style={{ transitionDelay: delay + "ms", ...style }}>{children}</div>;
+  }
+
+  function NavItem({ label, items, page, go, openMenu, setOpenMenu, foot }) {
+    const open = openMenu === label;
+    return (
+      <div className={"nav-item" + (open ? " open" : "")}
+        onMouseEnter={() => setOpenMenu(label)} onMouseLeave={() => setOpenMenu(null)}>
+        <a className={"nav-link" + (page === label.toLowerCase() ? " active" : "")}
+          onClick={() => { go(label.toLowerCase()); setOpenMenu(null); }}>
+          {label}<Icon name="chevron" className="chev" />
+        </a>
+        <div className="dropdown" role="menu">
+          <div className="dropdown-grid">
+            {items.map((it) => (
+              <div className="dd-item" key={it.title} onClick={() => { go(label.toLowerCase(), it.anchor); setOpenMenu(null); }}>
+                <div className="dd-ico"><Icon name={it.icon} /></div>
+                <div><div className="dd-title">{it.title}{it.tag && <span className="tag tag-cyan" style={{ padding: "3px 9px", fontSize: 11 }}>{it.tag}</span>}</div>
+                  <div className="dd-desc">{it.desc}</div></div>
+              </div>
+            ))}
+          </div>
+          <div className="dd-foot">
+            <span>{foot}</span>
+            <a className="btn btn-primary btn-sm" onClick={(e) => { e.stopPropagation(); go(label.toLowerCase()); setOpenMenu(null); }}>View all <Icon name="arrow" className="arrow" /></a>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  function Nav({ page, go }) {
+    const [scrolled, setScrolled] = useState(false);
+    const [openMenu, setOpenMenu] = useState(null);
+    useEffect(() => {
+      const on = () => setScrolled(window.scrollY > 12);
+      window.addEventListener("scroll", on); on();
+      return () => window.removeEventListener("scroll", on);
+    }, []);
+    const productItems = [
+      { title: "iRetailOS", tag: "Flow", desc: "QR-based agentic queueing & customer flow orchestration.", icon: "grid", anchor: "iretailos" },
+      { title: "iVerifier", tag: "Identity", desc: "AI identity verification — biometric liveness, 150+ countries.", icon: "shield", anchor: "iverifier" },
+    ];
+    const solutionItems = [
+      { title: "AI Agents Framework", desc: "Three agentic pillars across customers, frontline & operations.", icon: "monitor", anchor: "agents" },
+      { title: "Experion Pulse", desc: "Omnichannel CX analytics with real-time sentiment & NPS.", icon: "chart", anchor: "pulse" },
+    ];
+    const companyItems = [
+      { title: "About Us", desc: "The team behind the mission — agentic-first by design.", icon: "users", anchor: "about" },
+      { title: "Contact", desc: "Book a discovery call or send us your project brief.", icon: "mail", anchor: "contact" },
+    ];
+    return (
+      <nav className={"nav" + (scrolled ? " nav--scrolled" : "")}>
+        <div className="nav-inner">
+          <div className="brand" onClick={() => go("home")}>
+            <Logo size={38} />
+            <div className="brand-word">EXPERION<small>L A B S</small></div>
+          </div>
+          <div className="nav-links">
+            <a className={"nav-link" + (page === "home" ? " active" : "")} onClick={() => go("home")}>Home</a>
+            <NavItem label="Products" items={productItems} page={page} go={go} openMenu={openMenu} setOpenMenu={setOpenMenu} foot="2 flagship products on AWS Agent Core" />
+            <NavItem label="Solutions" items={solutionItems} page={page} go={go} openMenu={openMenu} setOpenMenu={setOpenMenu} foot="Intelligence at every layer" />
+            <NavItem label="Company" items={companyItems} page={page} go={go} openMenu={openMenu} setOpenMenu={setOpenMenu} foot="Built for the agentic era" />
+          </div>
+          <div className="nav-actions">
+            <a className="btn btn-ghost btn-sm" onClick={() => go("company", "contact")}>Contact</a>
+            <a className="btn btn-primary btn-sm" onClick={() => go("company", "contact")}>Book a demo <Icon name="arrow" className="arrow" /></a>
+            <button className="nav-burger" onClick={() => go("products")} aria-label="Menu"><Icon name="menu" /></button>
+          </div>
+        </div>
+      </nav>
+    );
+  }
+
+  function Footer({ go }) {
+    const col = (h, links) => (
+      <div className="foot-col">
+        <h5>{h}</h5>
+        {links.map(([t, p, a]) => <a key={t} onClick={() => go(p, a)}>{t}</a>)}
+      </div>
+    );
+    return (
+      <footer className="footer">
+        <div className="wrap">
+          <div className="foot-grid">
+            <div className="foot-brand">
+              <div className="brand" style={{ cursor: "pointer" }} onClick={() => go("home")}>
+                <Logo size={40} />
+                <div className="brand-word" style={{ color: "#fff" }}>EXPERION<small style={{ color: "#8AA2C0" }}>L A B S</small></div>
+              </div>
+              <p>An agentic-first deep-tech studio. We bridge complex engineering and human intuition — building enterprise-scale intelligence on AWS Agent Core.</p>
+            </div>
+            {col("Products", [["iRetailOS", "products", "iretailos"], ["iVerifier", "products", "iverifier"], ["AI Agents Framework", "solutions", "agents"], ["Experion Pulse", "solutions", "pulse"]])}
+            {col("Company", [["About Us", "company", "about"], ["Why Experion", "home", "apart"], ["Contact", "company", "contact"], ["Book a demo", "company", "contact"]])}
+            {col("Built on", [["AWS Agent Core", "solutions", "agents"], ["SDK + API", "products", "iverifier"], ["ISO 42001", "company", "about"], ["SOC 2 · GDPR", "company", "about"]])}
+          </div>
+          <div className="foot-bottom">
+            <span>© 2026 Experion Labs. All rights reserved. · admin@experionlabs.com</span>
+            <div className="foot-badges">
+              <span className="foot-badge"><Icon name="shield" />ISO 42001</span>
+              <span className="foot-badge"><Icon name="lock" />SOC 2</span>
+              <span className="foot-badge"><Icon name="check" />GDPR</span>
+            </div>
+          </div>
+        </div>
+      </footer>
+    );
+  }
+
+  window.Nav = Nav;
+  window.Footer = Footer;
+  window.Reveal = Reveal;
+})();
+
+  </script>
+  <script type="text/babel">
+/* cta.jsx — CTA band + functional contact form, exported to window */
+(function () {
+  const { useState } = React;
+
+  function CTA({ go }) {
+    return (
+      <section className="section">
+        <div className="wrap">
+          <window.Reveal>
+            <div className="cta-box">
+              <div className="cta-grid">
+                <div>
+                  <div className="eyebrow" style={{ color: "#3FC8E6", marginBottom: 18 }}><span className="dot" style={{ background: "#3FC8E6" }} />Let's build</div>
+                  <h2>Something <span style={{ background: "linear-gradient(100deg,#3FC8E6,#5C9CFF)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent" }}>great.</span></h2>
+                  <p className="lead">Ready to transform your customer experience? Our team will work with you to understand your challenges and design a tailored, agentic solution.</p>
+                  <div className="hero-cta" style={{ marginTop: 30 }}>
+                    <a className="btn btn-primary btn-lg" onClick={() => go("company", "contact")}>Book a demo <Icon name="arrow" className="arrow" /></a>
+                    <a className="btn btn-dark btn-lg" onClick={() => go("products")}>Explore products</a>
+                  </div>
+                </div>
+                <ul className="cta-points">
+                  {["Response within 24 business hours", "Free discovery call with our CX experts", "Tailored solution design at no obligation", "Live product demo with your own use case"].map(t => (
+                    <li key={t}><span className="fi"><Icon name="check" /></span>{t}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </window.Reveal>
+        </div>
+      </section>
+    );
+  }
+
+  function ContactForm() {
+    const [form, setForm] = useState({ first: "", last: "", email: "", interest: "", details: "" });
+    const [sent, setSent] = useState(false);
+    const [err, setErr] = useState({});
+    const set = (k) => (e) => setForm({ ...form, [k]: e.target.value });
+    const submit = (e) => {
+      e.preventDefault();
+      const er = {};
+      if (!form.first.trim()) er.first = 1;
+      if (!form.email.trim() || !/^[^@]+@[^@]+\.[^@]+$/.test(form.email)) er.email = 1;
+      setErr(er);
+      if (Object.keys(er).length === 0) setSent(true);
+    };
+    if (sent) return (
+      <div className="form-card" style={{ textAlign: "center", padding: "56px 34px" }}>
+        <div style={{ width: 64, height: 64, margin: "0 auto 22px", borderRadius: 18, display: "grid", placeItems: "center", background: "var(--grad-cta)", color: "#fff" }}>
+          <Icon name="check" style={{ width: 30, height: 30 }} />
+        </div>
+        <h3 style={{ fontSize: 26 }}>Message sent.</h3>
+        <p className="muted" style={{ marginTop: 12 }}>Thanks, {form.first}. Our team will reach out within 24 business hours to set up your discovery call.</p>
+        <button className="btn btn-ghost" style={{ marginTop: 24 }} onClick={() => { setSent(false); setForm({ first: "", last: "", email: "", interest: "", details: "" }); }}>Send another</button>
+      </div>
+    );
+    return (
+      <form className="form-card" onSubmit={submit} noValidate>
+        <h3 style={{ fontSize: 28 }}>Send us a message</h3>
+        <p className="muted" style={{ marginTop: 8, marginBottom: 26 }}>Tell us about your project and we'll get back to you promptly.</p>
+        <div className="form-row">
+          <div className="field" style={{ marginTop: 0 }}><label>First name</label>
+            <input value={form.first} onChange={set("first")} placeholder="Jane" style={err.first ? { borderColor: "#E5484D" } : null} /></div>
+          <div className="field" style={{ marginTop: 0 }}><label>Last name</label>
+            <input value={form.last} onChange={set("last")} placeholder="Doe" /></div>
+        </div>
+        <div className="field"><label>Corporate email</label>
+          <input value={form.email} onChange={set("email")} placeholder="jane@company.com" style={err.email ? { borderColor: "#E5484D" } : null} />
+          {err.email && <span style={{ color: "#E5484D", fontSize: 12.5, fontWeight: 600, marginTop: 6, display: "block" }}>Enter a valid corporate email.</span>}
+        </div>
+        <div className="field"><label>I'm interested in</label>
+          <select value={form.interest} onChange={set("interest")}>
+            <option value="">Select a solution…</option>
+            <option>iRetailOS — Flow & Queueing</option>
+            <option>iVerifier — Identity & Trust</option>
+            <option>AI Agents Framework</option>
+            <option>Experion Pulse — CX Analytics</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div className="field"><label>Project details</label>
+          <textarea value={form.details} onChange={set("details")} placeholder="Briefly describe your requirements, timeline, and scale…" /></div>
+        <button type="submit" className="btn btn-primary" style={{ width: "100%", justifyContent: "center", marginTop: 24, padding: "16px" }}>
+          Send message <Icon name="arrow" className="arrow" />
+        </button>
+      </form>
+    );
+  }
+
+  window.CTA = CTA;
+  window.ContactForm = ContactForm;
+})();
+
+  </script>
+  <script type="text/babel">
+/* home.jsx — Home page composition, exported to window */
+(function () {
+  const { useState, useEffect } = React;
+  const { PILLARS, APART, STATS, PRODUCTS, SOLUTIONS } = window.DATA;
+
+  function Counter({ to, c }) {
+    // animated number for stat band
+    const [ref, seen] = window.useInView(0.4);
+    const [val, setVal] = useState(0);
+    const num = parseFloat(to);
+    useEffect(() => {
+      if (!seen || isNaN(num)) return;
+      let raf, start;
+      const dur = 1100;
+      const tick = (t) => { if (!start) start = t; const p = Math.min((t - start) / dur, 1);
+        setVal(num * (1 - Math.pow(1 - p, 3))); if (p < 1) raf = requestAnimationFrame(tick); };
+      raf = requestAnimationFrame(tick); return () => cancelAnimationFrame(raf);
+    }, [seen]);
+    const display = isNaN(num) ? to : to.replace(String(num), num % 1 ? val.toFixed(1) : Math.round(val));
+    return <span className={"n " + c} ref={ref}>{display}</span>;
+  }
+
+  function Home({ go }) {
+    return (
+      <div className="view">
+        {/* HERO */}
+        <header className="hero">
+          <div className="ambient" />
+          <div className="wrap">
+            <div className="hero-grid">
+              <div>
+                <div className="hero-badge">
+                  <span className="pip">NEW</span>
+                  <span>Agentic platform on <b>AWS Agent Core</b></span>
+                </div>
+                <h1>Experience.<br /><span className="grad">Innovate.</span> Impact<span className="dot">.</span></h1>
+                <p className="hero-sub lead">We bridge complex engineering and human intuition — deploying intelligent, agentic capabilities that optimize business operations and turn friction into seamless experiences.</p>
+                <div className="hero-cta">
+                  <a className="btn btn-primary btn-lg" onClick={() => go("company", "contact")}>Book a demo <Icon name="arrow" className="arrow" /></a>
+                  <a className="btn btn-ghost btn-lg" onClick={() => go("products")}><Icon name="play" />See the products</a>
+                </div>
+                <div className="hero-trust">
+                  <div className="lab">Enterprise-grade, compliant from day one</div>
+                  <div className="hero-trust-row">
+                    <span className="trust-item"><Icon name="shield" />ISO 42001</span>
+                    <span className="trust-item"><Icon name="lock" />SOC 2</span>
+                    <span className="trust-item"><Icon name="check" />GDPR-ready</span>
+                    <span className="trust-item"><Icon name="globe" />150+ countries</span>
+                  </div>
+                </div>
+              </div>
+              <window.Reveal delay={120}><window.ProductShowcase go={go} /></window.Reveal>
+            </div>
+          </div>
+        </header>
+
+        {/* STACK / TRUST BAR */}
+        <div style={{ borderTop: "1px solid var(--line)", borderBottom: "1px solid var(--line)", background: "var(--bg-tint)" }}>
+          <div className="wrap" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24, padding: "22px 40px", flexWrap: "wrap" }}>
+            <div className="muted" style={{ fontWeight: 700, fontSize: 14 }}>Every product ships with:&nbsp;
+              <span style={{ color: "var(--ink)" }}>AWS Agent Core · SDK + API · ISO 42001 · SOC 2 · GDPR</span></div>
+            <div style={{ fontWeight: 800, letterSpacing: ".12em", color: "var(--cyan)", fontSize: 13 }}>2 PRODUCTS · 2 SOLUTIONS · INFINITE SCALE</div>
+          </div>
+        </div>
+
+        {/* HOW WE DO IT */}
+        <section className="section" id="how">
+          <div className="wrap">
+            <div className="process">
+              <window.Reveal>
+                <div className="sec-head">
+                  <div className="eyebrow"><span className="dot" />How We Do It</div>
+                  <h2>Three core pillars,<br /><span className="grad">one obsession.</span></h2>
+                  <p className="lead">We bridge the gap between complex engineering and human intuition by executing across three core pillars.</p>
+                  <div className="chip-row" style={{ marginTop: 28 }}>
+                    <span className="tag tag-cyan">Deep-tech studio</span>
+                    <span className="tag tag-blue">Agentic-first</span>
+                    <span className="tag tag-violet">Enterprise-scale</span>
+                  </div>
+                </div>
+              </window.Reveal>
+              <div className="proc-list">
+                {PILLARS.map((p, i) => (
+                  <window.Reveal key={p.n} delay={i * 90}>
+                    <div className="proc-item">
+                      <div className="proc-num">{p.n}</div>
+                      <div>
+                        <h3>{p.title}</h3>
+                        <p>{p.body}</p>
+                      </div>
+                    </div>
+                  </window.Reveal>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* DARK STATS BAND */}
+        <section className="section section--dark">
+          <div className="ambient" />
+          <div className="wrap" style={{ position: "relative", zIndex: 1 }}>
+            <window.Reveal>
+              <div className="sec-head center" style={{ marginBottom: 56 }}>
+                <div className="eyebrow" style={{ justifyContent: "center" }}><span className="dot" />Measurable Impact</div>
+                <h2 style={{ color: "#fff" }}>Outcomes, not promises.</h2>
+                <p className="lead" style={{ margin: "18px auto 0" }}>Every product is designed with clear, trackable KPIs — and our customers feel the difference fast.</p>
+              </div>
+            </window.Reveal>
+            <window.Reveal delay={120}>
+              <div className="statband">
+                {STATS.map((s) => (
+                  <div className="s" key={s.l}><Counter to={s.n} c={s.c} /><div className="l">{s.l}</div></div>
+                ))}
+              </div>
+            </window.Reveal>
+          </div>
+        </section>
+
+        {/* WHAT SETS US APART */}
+        <section className="section" id="apart">
+          <div className="wrap">
+            <window.Reveal>
+              <div className="sec-head" style={{ marginBottom: 52 }}>
+                <div className="eyebrow eyebrow--chip"><span className="dot" />Why Experion Labs</div>
+                <h2 style={{ marginTop: 18 }}>What Sets Us <span className="grad">Apart.</span></h2>
+              </div>
+            </window.Reveal>
+            <div className="cards">
+              {APART.map((c, i) => (
+                <window.Reveal key={c.title} delay={(i % 3) * 80}>
+                  <div className="fcard">
+                    <span className="seam" />
+                    <div className={"ico " + c.color}><Icon name={c.icon} /></div>
+                    <h3>{c.title}</h3>
+                    <p>{c.body}</p>
+                  </div>
+                </window.Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* PRODUCTS + SOLUTIONS TEASER */}
+        <section className="section section--tint">
+          <div className="wrap">
+            <window.Reveal>
+              <div className="sec-head center" style={{ marginBottom: 48 }}>
+                <div className="eyebrow" style={{ justifyContent: "center" }}><span className="dot" />Explore the platform</div>
+                <h2>Built for the <span className="grad">agentic era.</span></h2>
+              </div>
+            </window.Reveal>
+            <div className="index-list">
+              {PRODUCTS.map((p, i) => (
+                <window.Reveal key={p.id} delay={i * 70}>
+                  <div className="index-row" onClick={() => go("products", p.id)}>
+                    <div className="index-ico"><Icon name={p.icon} /></div>
+                    <div className="index-main">
+                      <div className="it"><h4>{p.name}</h4><span className="kick">{p.kicker}</span></div>
+                      <div className="id">{p.teaser}</div>
+                    </div>
+                    <div className="index-tags">{p.audience.map(a => <span key={a} className={"tag " + (a === "Operations" ? "tag-violet" : "tag-cyan")}>{a}</span>)}</div>
+                    <div className="index-arrow"><Icon name="arrow" /></div>
+                  </div>
+                </window.Reveal>
+              ))}
+              {SOLUTIONS.map((s, i) => (
+                <window.Reveal key={s.id} delay={(i + 2) * 70}>
+                  <div className="index-row" onClick={() => go("solutions", s.id)}>
+                    <div className="index-ico"><Icon name={s.icon} /></div>
+                    <div className="index-main">
+                      <div className="it"><h4>{s.name}</h4><span className="kick">{s.kicker}</span></div>
+                      <div className="id">{s.teaser}</div>
+                    </div>
+                    <div className="index-tags">{s.tags.map(a => <span key={a} className={"tag " + (a === "Sentiment" ? "tag-cyan" : "tag-blue")}>{a}</span>)}</div>
+                    <div className="index-arrow"><Icon name="arrow" /></div>
+                  </div>
+                </window.Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* VISION */}
+        <section className="section">
+          <div className="wrap">
+            <window.Reveal>
+              <div style={{ maxWidth: 980, margin: "0 auto", textAlign: "center" }}>
+                <div className="eyebrow" style={{ justifyContent: "center", marginBottom: 24 }}><Icon name="eye" style={{ width: 16, height: 16 }} />Our Vision</div>
+                <p style={{ fontFamily: "Sora", fontWeight: 700, fontSize: "clamp(24px,3vw,38px)", lineHeight: 1.3, letterSpacing: "-.02em", color: "var(--ink)" }}>
+                  “To digitalize customer touchpoints, enhance user experience and deploy intelligent, agentic capabilities that optimize business operations — <span className="grad">transforming complex problems into seamless experiences</span> that empower people and drive meaningful impact.”
+                </p>
+              </div>
+            </window.Reveal>
+          </div>
+        </section>
+
+        <window.CTA go={go} />
+      </div>
+    );
+  }
+
+  window.Home = Home;
+})();
+
+  </script>
+  <script type="text/babel">
+/* products.jsx — Products page, exported to window */
+(function () {
+  const { useEffect } = React;
+  const { PRODUCTS } = window.DATA;
+
+  function ProductSection({ p, idx }) {
+    const reversed = idx % 2 === 1;
+    return (
+      <section className="section" id={p.id} style={{ scrollMarginTop: 110 }}>
+        <div className="wrap">
+          <window.Reveal>
+            <div className="eyebrow eyebrow--chip" style={{ marginBottom: 36 }}><span className="dot" />Product 0{idx + 1} — {p.name}</div>
+          </window.Reveal>
+          <div className={"split" + (reversed ? " rev" : "")}>
+            <div className="split-copy">
+              <window.Reveal>
+                <div className="prod-icon"><Icon name={p.icon} /></div>
+                <div className="prod-kicker">
+                  <span className="prod-eyebrow">{p.kicker}</span>
+                  {p.audience.map(a => <span key={a} className={"tag " + (a === "Operations" ? "tag-violet" : "tag-cyan")} style={{ fontSize: 11, padding: "4px 10px" }}>{a}</span>)}
+                </div>
+                <h3>{p.name}</h3>
+                <p className="split-lead" dangerouslySetInnerHTML={{ __html: p.lead }} />
+                <ul className="feat-list">
+                  {p.features.map(([t, d]) => (
+                    <li key={t}><span className="fi"><Icon name="check" /></span><span><b>{t}</b> {d}</span></li>
+                  ))}
+                </ul>
+                <div className="chip-row">
+                  {p.chips.map(c => <span key={c} className="tag tag-blue">{c}</span>)}
+                </div>
+              </window.Reveal>
+            </div>
+            <div className="split-visual">
+              <window.Reveal delay={120}><window.Dash kind={p.dash} /></window.Reveal>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  function Products({ go }) {
+    return (
+      <div className="view">
+        <header className="hero" style={{ paddingBottom: 60 }}>
+          <div className="ambient" />
+          <div className="wrap" style={{ position: "relative", zIndex: 2 }}>
+            <div className="sec-head center" style={{ paddingTop: 30 }}>
+              <div className="eyebrow" style={{ justifyContent: "center" }}><span className="dot" />Our Products</div>
+              <h1 className="h-display" style={{ marginTop: 18 }}>Built for the <span className="grad">Agentic Era.</span></h1>
+              <p className="lead" style={{ margin: "20px auto 0", maxWidth: 640 }}>Two flagship products, purpose-built on AWS Agent Core — transforming customer identity and in-branch experience.</p>
+            </div>
+            <window.Reveal delay={120}>
+              <div className="index-list" style={{ marginTop: 52 }}>
+                {PRODUCTS.map((p, i) => (
+                  <div className="index-row" key={p.id} onClick={() => document.getElementById(p.id)?.scrollIntoView({ behavior: "smooth", block: "start" })}>
+                    <div className="index-num">0{i + 1}</div>
+                    <div className="index-ico"><Icon name={p.icon} /></div>
+                    <div className="index-main">
+                      <div className="it"><h4>{p.name}</h4><span className="kick">{p.kicker}</span></div>
+                      <div className="id">{p.teaser}</div>
+                    </div>
+                    <div className="index-tags">{p.audience.map(a => <span key={a} className={"tag " + (a === "Operations" ? "tag-violet" : "tag-cyan")}>{a}</span>)}</div>
+                    <div className="index-arrow"><Icon name="arrow" /></div>
+                  </div>
+                ))}
+              </div>
+            </window.Reveal>
+          </div>
+        </header>
+
+        {PRODUCTS.map((p, i) => <ProductSection key={p.id} p={p} idx={i} />)}
+
+        <window.CTA go={go} />
+      </div>
+    );
+  }
+
+  window.Products = Products;
+})();
+
+  </script>
+  <script type="text/babel">
+/* solutions.jsx — Solutions page, exported to window */
+(function () {
+  const { SOLUTIONS } = window.DATA;
+  const agents = SOLUTIONS.find(s => s.id === "agents");
+  const pulse = SOLUTIONS.find(s => s.id === "pulse");
+
+  function AgentsSection() {
+    return (
+      <section className="section section--tint" id="agents" style={{ scrollMarginTop: 110 }}>
+        <div className="wrap">
+          <window.Reveal>
+            <div className="eyebrow eyebrow--chip" style={{ marginBottom: 36 }}><span className="dot" />Solution 01 — AI Agents Framework</div>
+          </window.Reveal>
+          <div className="split">
+            <div className="split-copy">
+              <window.Reveal>
+                <div className="prod-icon"><Icon name="monitor" /></div>
+                <span className="prod-eyebrow">Three Pillars · AWS Agent Core</span>
+                <h3>AI Agents Framework</h3>
+                <p className="split-lead" dangerouslySetInnerHTML={{ __html: agents.lead }} />
+                <div style={{ marginTop: 26, padding: 22, background: "#fff", border: "1px solid var(--line)", borderRadius: "var(--r)", boxShadow: "var(--sh-1)" }}>
+                  <div style={{ fontSize: 11.5, fontWeight: 800, letterSpacing: ".12em", textTransform: "uppercase", color: "var(--slate-2)", marginBottom: 12 }}>Built on</div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" }}>
+                    <span className="tag tag-cyan" style={{ fontSize: 15, padding: "10px 16px", fontWeight: 800 }}>AWS Agent Core</span>
+                    <span className="muted" style={{ fontWeight: 600 }}>Native · Scalable · Secure</span>
+                  </div>
+                </div>
+                <div className="chip-row">{agents.chips.map(c => <span key={c} className="tag tag-blue">{c}</span>)}</div>
+              </window.Reveal>
+            </div>
+            <div className="split-visual" style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+              {agents.pillars.map((p, i) => (
+                <window.Reveal key={p.n} delay={i * 90}>
+                  <div className="fcard" style={{ padding: 24 }}>
+                    <div style={{ display: "flex", gap: 14 }}>
+                      <div className={"ico " + (i === 0 ? "cyan" : i === 1 ? "blue" : "violet")} style={{ width: 44, height: 44, margin: 0, borderRadius: 12, flex: "none" }}><Icon name={p.icon} style={{ width: 21, height: 21 }} /></div>
+                      <div>
+                        <div style={{ fontSize: 11.5, fontWeight: 800, letterSpacing: ".11em", textTransform: "uppercase", color: i === 0 ? "var(--cyan)" : i === 1 ? "var(--blue)" : "#6366F1" }}>Pillar {p.n} · {p.aud}</div>
+                        <h4 style={{ fontFamily: "Sora", fontSize: 18, fontWeight: 700, marginTop: 6, lineHeight: 1.25 }}>{p.title}</h4>
+                      </div>
+                    </div>
+                    <ul className="feat-list" style={{ marginTop: 16, gap: 9 }}>
+                      {p.points.map(pt => <li key={pt} style={{ fontSize: 14.5 }}><span className="fi" style={{ width: 20, height: 20 }}><Icon name="arrow" style={{ width: 11, height: 11 }} /></span>{pt}</li>)}
+                    </ul>
+                  </div>
+                </window.Reveal>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  function PulseSection() {
+    const block = (label, color, text) => (
+      <div style={{ padding: 22, borderRadius: "var(--r)", border: "1px solid " + color.b, background: color.bg }}>
+        <div style={{ fontSize: 11.5, fontWeight: 800, letterSpacing: ".12em", textTransform: "uppercase", color: color.t, marginBottom: 10 }}>{label}</div>
+        <p style={{ fontSize: 15, color: "var(--slate)", lineHeight: 1.6 }} dangerouslySetInnerHTML={{ __html: text }} />
+      </div>
+    );
+    return (
+      <section className="section" id="pulse" style={{ scrollMarginTop: 110 }}>
+        <div className="wrap">
+          <window.Reveal>
+            <div className="eyebrow eyebrow--chip" style={{ marginBottom: 36 }}><span className="dot" />Solution 02 — Experion Pulse</div>
+          </window.Reveal>
+          <div className="split">
+            <div className="split-copy">
+              <window.Reveal>
+                <div className="prod-icon"><Icon name="chart" /></div>
+                <div className="prod-kicker">
+                  <span className="prod-eyebrow">{pulse.kicker}</span>
+                  {pulse.tags.map(t => <span key={t} className={"tag " + (t === "Sentiment" ? "tag-cyan" : "tag-blue")} style={{ fontSize: 11, padding: "4px 10px" }}>{t}</span>)}
+                </div>
+                <h3>Experion Pulse</h3>
+                <div style={{ display: "flex", flexDirection: "column", gap: 14, marginTop: 24 }}>
+                  {block("The Problem", { t: "#E5746A", b: "rgba(229,116,106,.3)", bg: "rgba(229,116,106,.05)" }, pulse.problem)}
+                  {block("The Solution", { t: "var(--blue)", b: "rgba(30,111,232,.26)", bg: "rgba(30,111,232,.04)" }, pulse.solution)}
+                  {block("The Impact", { t: "var(--green)", b: "rgba(33,192,138,.3)", bg: "rgba(33,192,138,.05)" }, pulse.impact)}
+                </div>
+                <ul className="feat-list" style={{ marginTop: 24 }}>
+                  {pulse.features.map(([t, d]) => <li key={t}><span className="fi"><Icon name="arrow" style={{ width: 12, height: 12 }} /></span><span><b>{t}</b> {d}</span></li>)}
+                </ul>
+              </window.Reveal>
+            </div>
+            <div className="split-visual">
+              <window.Reveal delay={120}>
+                <div style={{ position: "sticky", top: 110 }}><window.Dash kind="pulse" /></div>
+              </window.Reveal>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  function Solutions({ go }) {
+    return (
+      <div className="view">
+        <header className="hero" style={{ paddingBottom: 56 }}>
+          <div className="ambient" />
+          <div className="wrap" style={{ position: "relative", zIndex: 2 }}>
+            <div className="sec-head center" style={{ paddingTop: 30 }}>
+              <div className="eyebrow" style={{ justifyContent: "center" }}><span className="dot" />Our Solutions</div>
+              <h1 className="h-display" style={{ marginTop: 18 }}>Intelligence at <span className="grad">Every Layer.</span></h1>
+              <p className="lead" style={{ margin: "20px auto 0", maxWidth: 680 }}>Two intelligent solutions covering every touchpoint — agentic AI across all pillars and unified omnichannel analytics with real-time sentiment — all built natively on AWS Agent Core.</p>
+            </div>
+            <window.Reveal delay={120}>
+              <div className="index-list" style={{ marginTop: 52 }}>
+                {SOLUTIONS.map((s, i) => (
+                  <div className="index-row" key={s.id} onClick={() => document.getElementById(s.id)?.scrollIntoView({ behavior: "smooth", block: "start" })}>
+                    <div className="index-num">0{i + 1}</div>
+                    <div className="index-ico"><Icon name={s.icon} /></div>
+                    <div className="index-main">
+                      <div className="it"><h4>{s.name}</h4><span className="kick">{s.kicker}</span></div>
+                      <div className="id">{s.teaser}</div>
+                    </div>
+                    <div className="index-tags">{s.tags.map(a => <span key={a} className={"tag " + (a === "Sentiment" ? "tag-cyan" : "tag-blue")}>{a}</span>)}</div>
+                    <div className="index-arrow"><Icon name="arrow" /></div>
+                  </div>
+                ))}
+              </div>
+            </window.Reveal>
+          </div>
+        </header>
+
+        <AgentsSection />
+        <PulseSection />
+        <window.CTA go={go} />
+      </div>
+    );
+  }
+
+  window.Solutions = Solutions;
+})();
+
+  </script>
+  <script type="text/babel">
+/* company.jsx — Company (About + Contact), exported to window */
+(function () {
+  const STORY = [
+    { icon: "bulb", color: "cyan", title: "The Founding Vision", body: "Founded on the principle that the best technology becomes invisible — it simply works, adapts, and empowers without friction or complexity." },
+    { icon: "rocket", color: "blue", title: "Agentic by Architecture", body: "We didn't bolt AI onto existing products. We designed every solution from day one to be orchestrated by autonomous agents on AWS Agent Core." },
+    { icon: "globe", color: "violet", title: "Built for Enterprise Scale", body: "From day one, we designed for enterprise-grade compliance (ISO 42001, SOC 2, GDPR) and global deployment across 150+ countries." },
+  ];
+
+  function Company({ go }) {
+    return (
+      <div className="view">
+        {/* ABOUT HERO */}
+        <header className="hero" style={{ paddingBottom: 60 }} id="about">
+          <div className="ambient" />
+          <div className="wrap" style={{ position: "relative", zIndex: 2 }}>
+            <div className="sec-head center" style={{ paddingTop: 24 }}>
+              <div className="eyebrow eyebrow--chip" style={{ margin: "0 auto" }}><span className="dot" />Company</div>
+              <h1 className="h-display" style={{ marginTop: 22 }}>The Team Behind <span className="grad">the Mission.</span></h1>
+            </div>
+          </div>
+        </header>
+
+        {/* STORY */}
+        <section className="section" style={{ paddingTop: 0 }}>
+          <div className="wrap">
+            <div className="split">
+              <div className="split-copy">
+                <window.Reveal>
+                  <div className="eyebrow"><span className="dot" />Our Story</div>
+                  <h3 style={{ marginTop: 16 }}>Born from a simple belief:<br /><span className="grad">technology should serve people.</span></h3>
+                  <p className="split-lead" style={{ marginTop: 22 }}>Experion Labs was founded by engineers and product leaders who spent years watching enterprises struggle with the gap between powerful technology and the people who needed to use it. Complex workflows, friction-filled onboarding, and fragmented journeys weren't inevitable — they were engineering failures waiting to be solved.</p>
+                  <p className="split-lead" style={{ marginTop: 18 }}>We set out to build an agentic-first studio that designs backward from the human experience. Every product we ship is measured by a single standard: does it genuinely make life easier for the end user and the enterprise behind them?</p>
+                </window.Reveal>
+              </div>
+              <div className="split-visual" style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+                {STORY.map((s, i) => (
+                  <window.Reveal key={s.title} delay={i * 90}>
+                    <div className="fcard" style={{ padding: 24, display: "flex", gap: 16, alignItems: "flex-start" }}>
+                      <div className={"ico " + s.color} style={{ width: 48, height: 48, margin: 0, borderRadius: 13, flex: "none" }}><Icon name={s.icon} style={{ width: 22, height: 22 }} /></div>
+                      <div><h4 style={{ fontFamily: "Sora", fontSize: 19, fontWeight: 700 }}>{s.title}</h4><p style={{ marginTop: 8, fontSize: 14.5, color: "var(--slate)", lineHeight: 1.55 }}>{s.body}</p></div>
+                    </div>
+                  </window.Reveal>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CONTACT */}
+        <section className="section section--tint" id="contact" style={{ scrollMarginTop: 100 }}>
+          <div className="wrap">
+            <div className="split rev">
+              <div className="split-copy">
+                <window.Reveal>
+                  <h2 style={{ fontSize: "clamp(34px,4vw,52px)", fontWeight: 800, letterSpacing: "-.03em" }}>Let's Build<br /><span className="grad">Something Great.</span></h2>
+                  <p className="lead" style={{ marginTop: 20, maxWidth: 460 }}>Ready to transform your customer experience? Our team of experts will work with you to understand your unique challenges and design a tailored solution.</p>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 14, marginTop: 30 }}>
+                    {[["mail", "Email", "admin@experionlabs.com"], ["calendar", "Book a demo", "Schedule a 30-minute discovery call"], ["linkedin", "LinkedIn", "Experion Labs"]].map(([ic, l, v]) => (
+                      <div key={l} style={{ display: "flex", alignItems: "center", gap: 16, padding: 18, background: "#fff", border: "1px solid var(--line)", borderRadius: "var(--r)", boxShadow: "var(--sh-1)" }}>
+                        <div className="ico cyan" style={{ width: 46, height: 46, margin: 0, borderRadius: 12, flex: "none" }}><Icon name={ic} style={{ width: 21, height: 21 }} /></div>
+                        <div><div style={{ fontSize: 11.5, fontWeight: 800, letterSpacing: ".1em", textTransform: "uppercase", color: "var(--slate-2)" }}>{l}</div><div style={{ fontWeight: 700, fontSize: 16, marginTop: 2 }}>{v}</div></div>
+                      </div>
+                    ))}
+                  </div>
+                </window.Reveal>
+              </div>
+              <div className="split-visual">
+                <window.Reveal delay={120}><window.ContactForm /></window.Reveal>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    );
+  }
+
+  window.Company = Company;
+})();
+
+  </script>
+  <script type="text/babel">
+/* app.jsx — router, tweaks, mount */
+(function () {
+  const { useState, useEffect, useRef } = React;
+  const { useTweaks, TweaksPanel, TweakSection, TweakColor, TweakRadio, TweakToggle, TweakSelect } = window;
+
+  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "accent": "#1E6FE8",
+    "density": "regular",
+    "headingFont": "Sora",
+    "animations": true
+  }/*EDITMODE-END*/;
+
+  const ACCENT_SOFT = {
+    "#1E6FE8": "rgba(30,111,232,.10)",
+    "#10A6C9": "rgba(16,166,201,.12)",
+    "#6366F1": "rgba(99,102,241,.10)",
+    "#21C08A": "rgba(33,192,138,.12)",
+  };
+
+  function App() {
+    const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+    const [page, setPage] = useState("home");
+    const pendingAnchor = useRef(null);
+
+    // apply tweaks → CSS vars / body classes
+    useEffect(() => {
+      const r = document.documentElement;
+      r.style.setProperty("--accent", t.accent);
+      r.style.setProperty("--accent-soft", ACCENT_SOFT[t.accent] || "rgba(30,111,232,.10)");
+      document.body.className = "density-" + t.density + (t.animations ? "" : " no-anim");
+      r.style.setProperty("--display-font", t.headingFont);
+    }, [t]);
+
+    // navigation
+    const go = (p, anchor) => {
+      pendingAnchor.current = anchor || null;
+      if (p === page) { scrollAnchor(); return; }
+      setPage(p);
+      window.scrollTo({ top: 0, behavior: "auto" });
+    };
+    const scrollAnchor = () => {
+      const a = pendingAnchor.current;
+      if (!a) return;
+      requestAnimationFrame(() => setTimeout(() => {
+        document.getElementById(a)?.scrollIntoView({ behavior: "smooth", block: "start" });
+        pendingAnchor.current = null;
+      }, 80));
+    };
+    useEffect(() => { scrollAnchor(); }, [page]);
+
+    const map = { home: window.Home, products: window.Products, solutions: window.Solutions, company: window.Company };
+    const Page = map[page] || window.Home;
+
+    return (
+      <React.Fragment>
+        <window.Nav page={page} go={go} />
+        <main><Page go={go} /></main>
+        <window.Footer go={go} />
+        <TweaksPanel title="Tweaks">
+          <TweakSection label="Brand accent" />
+          <TweakColor label="Accent color" value={t.accent}
+            options={["#1E6FE8", "#10A6C9", "#6366F1", "#21C08A"]}
+            onChange={(v) => setTweak("accent", v)} />
+          <TweakSection label="Typography" />
+          <TweakSelect label="Heading font" value={t.headingFont}
+            options={["Sora", "Space Grotesk", "Plus Jakarta Sans"]}
+            onChange={(v) => setTweak("headingFont", v)} />
+          <TweakSection label="Layout" />
+          <TweakRadio label="Density" value={t.density}
+            options={["compact", "regular", "comfy"]}
+            onChange={(v) => setTweak("density", v)} />
+          <TweakToggle label="Scroll animations" value={t.animations}
+            onChange={(v) => setTweak("animations", v)} />
+        </TweaksPanel>
+      </React.Fragment>
+    );
+  }
+
+  ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+})();
+
+  </script>
+</body>
+</html>
